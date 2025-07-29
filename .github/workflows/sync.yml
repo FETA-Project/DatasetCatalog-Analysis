@@ -1,0 +1,24 @@
+name: Sync Pipeline
+
+on:
+  workflow_dispatch:  # allows manual trigger
+  push:               # or run on every push
+    branches:
+      - main 
+
+jobs:
+  #git_sync_dev:
+  #  runs-on: ubuntu-latest
+  #  container:
+  #    image: python:3.11
+  #  steps:
+  #    - name: Run Git Sync Dev
+  #      run: curl --insecure -L ${{ secrets.KATODA_API_GIT_SYNC_DEV }}
+
+  git_sync_prod:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.11
+    steps:
+      - name: Run Git Sync Prod
+        run: curl --insecure -L ${{ secrets.KATODA_API_GIT_SYNC_PROD }}
