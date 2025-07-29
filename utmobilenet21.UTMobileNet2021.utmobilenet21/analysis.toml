@@ -1,0 +1,47 @@
+acronym = "utmobilenet21"
+acronym_aliases = "utmobilenet21, UTMobileNet2021"
+title = "UTMobileNet2021"
+paper_title = "UTMobileNetTraffic2021: A Labeled Public Network Traffic Dataset"
+authors = "Yuqiang Heng, Vikram Chandrasekhar, Jeffrey G. Andrews"
+description = "Contains network traffic captured from 17 android applications."
+format = "csv"
+doi = "10.1109/LNET.2021.3098455"
+origins_doi = ""
+date_submitted = 2024-10-21T08:42:38.269983Z
+submitter = "Kamil Jerabek <kamil.jerabek@cesnet.cz>"
+status = "accepted"
+tags = "network traffic classification, csv, android apps"
+url = "https://utexas.app.box.com/s/okrimcsz1mn9ec4j667kbb00d9gt16ii"
+
+# [generic_info]
+# data_collection_year = "2022"
+# data_collection_tool = "CICFlowMeter-V3"
+# feature_extraction_tool = "CICFlowMeter-V3"
+# classes = 80
+# features = 80
+# known_issues = """
+# Dataset is affected by issues described in: https://intrusion-detection.distrinet-research.be/WTMC2021/extended_doc.html
+# Wrong feature name: Unnamed: 0
+# Network features contains raw ip addresses and ports which are not ideal
+# Unstandard csv headers format (leading space)
+# """
+# dataset_organization = """
+# - e.g. per day
+# - e.g. Each class per file
+# Notes
+# """
+# per_class_data = """
+# {"Apple iTunes": 926,
+#  "Google Authentication": 872,
+#  "SUKL eRecept": 800,
+#  "Xiaomi Account API": 710,
+#  "Kaspersky": 700,
+#  "Redmine (CESNET, MFF UK, KIV ZCU)": 682}
+# """
+
+# [dataset_analysis]
+# drift_workflow = "name_of_jupyter_notebook.ipynb"
+# drift_manual = "name_of_jupyter_notebook.ipynb"
+# redundancy = """
+# ...
+# """

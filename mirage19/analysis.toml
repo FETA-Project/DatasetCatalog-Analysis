@@ -1,0 +1,42 @@
+title = "MIRAGE19"
+requester_name = "Kamil Jerabek"
+requester_mail = "kamil.jerabek@cesnet.cz"
+
+[generic_info]
+data_collection_year = "2019"
+classes = 20
+known_issues = """
+ 
+Original article says that the dataset consist of 40 app labels, but publicly available part of the dataset provides only 20 labels (apps traffic).
+The other 20 apps should be provided on request. However, most of the articles works with 20 labels.
+"""
+dataset_organization = """
+ 
+Directory per device (2 mobile devices).
+- several biflows per json file
+- files named by application
+- dataset contains background sub category that might be useful to filter out (unsure label)
+"""
+per_class_data = """
+{"com.waze": 11737,
+"de.motain.iliga": 10810,
+"com.accuweather.android": 10631,
+"com.duolingo": 8319,
+"it.subito": 8167,
+"com.contextlogic.wish": 6507,
+"com.spotify.music": 6431,
+"com.joelapenna.foursquared": 6399,
+"com.google.android.youtube": 6346,
+"com.iconology.comics": 5516,
+"com.facebook.katana": 5368,
+"com.dropbox.android": 4815,
+"com.twitter.android": 4734,
+"background": 4439,
+"com.pinterest": 4078,
+"com.facebook.orca": 4018,
+"com.tripadvisor.tripadvisor": 3572,
+"air.com.hypah.io.slither": 3088,
+"com.viber.voip": 2740,
+"com.trello": 2306,
+"com.groupon": 1986}
+"""

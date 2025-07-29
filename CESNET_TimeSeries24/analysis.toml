@@ -1,0 +1,64 @@
+acronym = "CESNET_TimeSeries24"
+acronym_aliases = ""
+title = ""
+paper_title = "CESNET-TimeSeries24: The dataset for network traffic forecasting and anomaly detection"
+authors = "Josef Koumar, Karel Hynek, Tomáš Čejka, Pavel Šiška"
+description = "The dataset called CESNET-TimeSeries24 was collected by long-term monitoring of selected statistical metrics for 40 weeks for each IP address on the ISP network CESNET3 (Czech Education and Science Network). The dataset encompasses network traffic from more than 275,000 active IP addresses, assigned to a wide variety of devices, including office computers, NATs, servers, WiFi routers, honeypots, and video-game consoles found in dormitories. Moreover, the dataset is also rich in network anomaly types since it contains all types of anomalies, ensuring a comprehensive evaluation of anomaly detection methods.\r\n"
+format = "CSV"
+doi = "https://doi.org/10.1038/s41597-025-04603-x"
+origins_doi = ""
+date_submitted = 2024-10-06T10:46:35.604000
+submitter = "Josef Koumar <koumajos@fit.cvut.cz>"
+status = "accepted"
+tags = "FETA"
+url = "https://zenodo.org/records/13382427"
+versions = ""
+analysis_status = "Completed"
+files = ["get-dataset.py"]
+label_name = ""
+filename = ""
+
+[collection_workflow]
+data_collection_tool = "ipfixprobe"
+data_collection_year = 2024
+feature_extraction_tool_info = "Tool that converts dataset to feature dataset. If any."
+feature_extraction_tool = "custom aggregation script - https://github.com/koumajos/CESNET-TimeSeries24-CD/blob/main/create_datapoints.py"
+feature_extraction_tool_description = "The scirpt aggregates network flows from ipfixprobe/ipfixcol and stores data to the timeseries DB"
+capture_config_parameters_info = "specific parameters that were used to capture dataset or feature dataset"
+capture_config_parameters = ""
+real_dataset_info = "Source of the dataset. E.g., real environment, testbed or generated."
+real_dataset = "yes, collected from CESNET3"
+annotation_info = "Description of the dataset annotation. E.g., manual, automatic"
+annotation = "This is timeseries datasets for anomaly detection. Part of the dataset is the static file ids_relationship.csv file contains a relationship between IP addresses, Institutions, and institution subnets and the weekends_and_holidays.csv contains information about the non-working days in the Czech Republic."
+
+[generic_info]
+capture_dates_info = "When was the dataset captured/generated"
+capture_dates = "n/a"
+classes = "n/a"
+features = 19
+f1-score_info = "F1-score calculated based on NDVM tool [https://github.com/soukudom/NDVM]"
+f1-score = "n/a"
+performance_metric_info = "Perfomance metric defined by the author. Please define full specification e.g., F1-weighted"
+performance_metric_name = "n/a"
+performance_metric_value = "n/a"
+label_info = "Name of the field with label. In case this is unsupervised dataset, type None"
+label = "n/a"
+known_issues_info = "Description of indentified issues in the dataset"
+known_issues = " "
+key_observations_info = "List of known errors, drifts, limits, ... of the dataset"
+key_observations = "* Gaps in the time series data because hosts does not transmit any data. These gaps are addressed by aggregation. However, even with a day-long aggregation interval, gaps still account for more than 89% of the IP address time series and 6% of the institutional subnet time series.\n* Author specifies list with recommendations how to use the dataset (Table.6)\n* The dataset exhibits patterns related to working days, weekends, and holidays, with more network activity observed on working days.\n* The dataset includes multiple time aggregation intervals (10 minutes, 1 hour, and 1 day).\n* The is small difference between features name in dataset vs zenodo documentation (\"average_n_dest_asn\" vs \"avg_n_dest_asn\")\"\n"
+dataset_organization_info = "Structure of the dataset. E.g., per day, per capture, per device"
+dataset_organization = "per institution_subnets, institution and ip address with multiple time aggregation windows (10 minutes, 1 hour, 1 day)"
+dataset_organization_description = "The organizatization is well described in the zenode https://zenodo.org/records/13382427. To support the organization there are several files to provided identification of data:\n * identifiers.csv in each dataset type contain IDs of time series that are present in the dataset\n * ids_relationship.csv file contains a relationship between IP addresses, Institutions, and institution subnets\n * weekends_and_holidays.csv contains information about the non-working days in the Czech Republic.\n "
+dataset_application_info = "Where the dataset has been already applied."
+dataset_application = "  * [1][] https://doi.org/10.48550/arXiv.2502.07779, Quantum-driven Zero Trust Framework with Dynamic Anomaly Detection in 7G Technology: A Neural Network Approach, https://ieeexplore.ieee.org/document/10575630; [used to evaluate the QNN-ZTF framework proposed in this paper. The authors use a hybrid dataset that combines network traffic logs from CESNET with simulated attack scenarios.][]\n "
+dataset_documentation_info = "How to get started with the dataset. Ideally add example notebook."
+dataset_documentation = " Getting started documentation is provided with Github repositories including examples:\n * How to replicate dataset collection environment https://github.com/koumajos/CESNET-TimeSeries24-CD/tree/main\n * How to start with the dataset https://github.com/koumajos/cesnet-timeseries24-example\n "
+used_dataset_info = "Script to get dataset for provided analysis"
+used_dataset = "get-dataset.py"
+per_class_data = "n/a"
+per_feature_data = "{\n    \"id_time\": \"Unique identifier for each aggregation interval within the time series, used to segment the dataset into specific time periods for analysis.\",\n    \"n_flows\": \"Total number of flows observed in the aggregation interval, indicating the volume of distinct sessions or connections for the IP address.\",\n    \"n_packets\": \"Total number of packets transmitted during the aggregation interval, reflecting the packet-level traffic volume for the IP address.\",\n    \"n_bytes\": \"Total number of bytes transmitted during the aggregation interval, representing the data volume for the IP address.\",\n    \"sum_n_dest_asn\": \"Sum of numbers of unique destination ASNs.\",\n    \"average_n_dest_asn\": \"The average number of unique destination ASNs\",\n    \"std_n_dest_asn\": \"Standard deviation of numbers of unique destination ASNs\",\n    \"sum_n_dest_ports\": \"Sum of numbers of unique destination transport layer ports\",\n    \"average_n_dest_ports\": \"The average number of unique destination transport layer ports.\",\n    \"std_n_dest_ports\": \"Standard deviation of numbers of unique destination transport layer ports.\",\n    \"sum_n_dest_ip\": \"Sum of numbers of unique destination IP addresses.\",\n    \"average_n_dest_ip\": \"The average number of unique destination IP addresses.\",\n    \"std_n_dest_ip\": \"Standard deviation of numbers of unique destination IP addresses.\",\n    \"tcp_udp_ratio_packets\": \"Ratio of packets sent using TCP versus UDP by the IP address during the aggregation interval, providing insight into the transport protocol usage pattern. This metric belongs to the interval <0, 1> where 1 is when all packets are sent over TCP, and 0 is when all packets are sent over UDP.\",\n    \"tcp_udp_ratio_bytes\": \"Ratio of bytes sent using TCP versus UDP by the IP address during the aggregation interval, highlighting the data volume distribution between protocols. This metric belongs to the interval <0, 1>  with same rule as tcp_udp_ratio_packets.\",\n    \"dir_ratio_packets\": \"Ratio of packet directions (inbound versus outbound) for the IP address during the aggregation interval, indicating the balance of traffic flow directions. This metric belongs to the interval <0, 1>, where 1 is when all packets are sent in the outgoing direction from the monitored IP address, and 0 is when all packets are sent in the incoming direction to the monitored IP address.\",\n    \"dir_ratio_bytes\": \"Ratio of byte directions (inbound versus outbound) for the IP address during the aggregation interval, showing the data volume distribution in traffic flows. This metric belongs to the interval <0, 1> with the same rule as dir_ratio_packets.\",\n    \"avg_duration\": \"Average duration of IP flows for the IP address during the aggregation interval, measuring the typical session length.\",\n    \"avg_ttl\": \"Average Time To Live (TTL) of IP flows for the IP address during the aggregation interval, providing insight into the lifespan of packets.\"\n}"
+
+[dataset_drift_analysis]
+
+[advanced_metrics]

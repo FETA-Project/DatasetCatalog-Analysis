@@ -1,0 +1,176 @@
+acronym_info = "Short name of the dataset, which is used as the unique identifier. E.g., CESNET_TLS_Year22"
+acronym = "CESNET-MINER22"
+acronym_aliases_info = "Additional alias for the Dataset Acronym (e.g. CESNET-TLS-Year22-XS). Used to filter the different subsection of the original dataset"
+acronym_aliases = ""
+title_info = "Full title of the dataset. E.g., CESNET-TLS-Year22"
+title = ""
+paper_title_info = "Full title of the original paper with the dataset"
+paper_title = ""
+authors = ""
+description_info = "High-level description of the dataset. E.g., TLS capture from CESNET2 backbone network over one year (2022). The capture was done using high-speed monitoring probes at the perimeter of CESNET2 network. This dataset provides realistic characteristics of traffic originating from various web browsers, operating systems, mobile devices, desktop machines, and both HTTP/1.1 and HTTP/2 protocols."
+description = "Version of CESNET-MINERS22 (evaluation part) with Nettisa feature vector. "
+format_info = "Dataset data format. E.g. json, csv, datazoo"
+format = "csv"
+doi_info = "DOI of this dataset"
+doi = ""
+origins_doi_info = "DOI of the original dataset"
+origins_doi = ""
+submitter = "Dominik Soukup <soukudom@cesnet.cz>"
+tags_info = "Use tags to categorize the dataset (comma separated)"
+tags = "FETA"
+url = ""
+versions = "CESNET-MINER22-Evaluation-Nettisa"
+date_submitted = 2025-04-14T21:54:07.514000
+analysis_status = "Completed"
+filename = "CESNET-MINER22.CESNET-MINER22-Evaluation-Nettisa.csv"
+files = ["get-dataset.py"]
+label_name = "LABEL"
+
+
+[collection_workflow]
+ data_collection_tool = "script"
+ data_collection_year = "2022"
+ feature_extraction_tool_info = "Tool that converts dataset to feature dataset. If any."
+ feature_extraction_tool = "Nettisa script"
+ feature_extraction_tool_description = "the script get-dataset.py loads the original dataset, process Per Packet Information (PPI) and calculate Nettisa feature vector"
+ capture_config_parameters_info = "specific parameters that were used to capture dataset or feature dataset" 
+ capture_config_parameters = "n/a"
+ real_dataset_info = "Source of the dataset. E.g., real environment, testbed or generated."
+ real_dataset = "yes"
+ annotation_info = "Description of the dataset annotation. E.g., manual, automatic"
+ annotation = "block-list IP"
+
+ 
+[generic_info]
+capture_dates_info = "When was the dataset captured/generated"
+capture_dates = "28.02.2022 - 31.03.2022"
+ classes = 2
+ features = 21
+ f1-score_info = "F1-score calculated based on NDVM tool [https://github.com/soukudom/NDVM]"
+ f1-score = "0.991117"
+ performance_metric_info = "Perfomance metric defined by the author. Please define full specification e.g., F1-weighted"
+ performance_metric_name = "n/a"
+ performance_metric_value = "n/a"
+ label_info = "Name of the field with label. In case this is unsupervised dataset, type None"
+ label = "LABEL"
+ known_issues_info = """Description of indentified issues in the dataset"""
+ known_issues = """ n/a """
+ key_observations_info = "List of known errors, drifts, limits, ... of the dataset"
+ key_observations = """
+ * The dataset has 0 small classes, 159132 duplicated samples, 6170 nan value
+ """
+ dataset_organization_info = "Structure of the dataset. E.g., per day, per capture, per device"
+ dataset_organization = "per capture"
+ dataset_organization_description_info = "Description of the content of the organization. Is there any metadata?"
+ dataset_organization_description = """ Dataset consists of two captures (design and evaluation) that are ready for deploymnet with ML. Everything is inluded in the dataset without metadata."""
+ dataset_documentation_info = "How to get started with the dataset. Ideally add example notebook."
+ dataset_documentation = """
+  Download the original CESNET-MINER22 dataset and run get-dataset.py script. Labels are encoded with `df.label.apply(lambda x: 0 if x == \"Miner\" else 1)`
+ """
+ used_dataset_info = "Script to get dataset for provided analysis"
+ used_dataset = "get-dataset.py"
+ dataset_application_info = "Where the dataset has been already applied."
+ dataset_application = """ n/a """
+
+
+per_class_data = """
+{
+  "Other": "682999",
+  "Miner": "392577"
+}
+"""
+
+per_feature_data = """{
+  "PACKETS": "The total number of packets observed in the network flow.",
+  "PACKETS_REV": "The total number of reverse direction packets observed in the network flow (relative to the initial direction).",
+  "LABEL": "The classification label assigned to the network flow (e.g., benign, malicious, specific attack type).",
+  "nts_mean": "The average network time series value (the specific metric this represents depends on how the time series is constructed, e.g., packet size, inter-arrival time).",
+  "nts_min": "The minimum network time series value observed in the flow.",
+  "nts_max": "The maximum network time series value observed in the flow.",
+  "nts_std": "The standard deviation of the network time series values, indicating the amount of variation or dispersion around the mean.",
+  "nts_rts": "A measure related to the rate of change in the network time series over time. The exact meaning depends on the calculation.",
+  "nts_avg_dis": "The average dispersion of the network time series values, likely a measure of how spread out the data points are. This might be related to the standard deviation or other measures of statistical dispersion.",
+  "nts_kurtosis": "A measure of the distribution of network time series values. High kurtosis indicates heavier tails and more outliers.",
+  "nts_mean_relative_time": "The average time of packets relative to the start of the flow.",
+  "nts_mean_time_differences": "The average time difference between consecutive packets in the flow.",
+  "nts_min_time_differences": "The minimum time difference observed between any two consecutive packets in the flow.",
+  "nts_max_time_differences": "The maximum time difference observed between any two consecutive packets in the flow.",
+  "nts_time_distribution": "A representation of how packets are distributed over time within the flow. This could be a statistical measure or a more complex representation.",
+  "nts_switching_ratio": "The ratio of changes in a specific network characteristic (e.g., packet size, direction) within the time series. A high ratio suggests frequent changes.",
+  "nts_max_minus_min": "The range of the network time series values, calculated as the difference between the maximum and minimum observed values.",
+  "nts_percent_deviation": "A measure of the percentage deviation of the network time series values from a central tendency (likely the mean or median).",
+  "nts_variance": "The square of the standard deviation, representing the average squared deviation of the network time series values from the mean.",
+  "nts_burstiness": "A measure of the irregularity or unevenness of the packet arrival times or other network time series characteristics. High burstiness indicates periods of intense activity followed by periods of inactivity.",
+  "nts_coef_variation": "The coefficient of variation of the network time series, calculated as the ratio of the standard deviation to the mean. It's a normalized measure of dispersion.",
+  "nts_directions": "Information about the sequence or distribution of packet directions within the flow (e.g., number of forward/reverse transitions)."
+}"""
+
+
+ [dataset_drift_analysis]
+ description = """Drift analysis is used to see behavior of the dataset over time. In this section, you can see a comparison of two workflows: Dataset without retraining and dataset with retraining based on drift detection described in https://github.com/FETA-Project/MFWDD.
+This description contains summary results of drift counts and features and classes that caused the most drifts. In case you would like to see more detailed insights behind these summary numbers, please visit the included jupyter notebook, where you can even run your own queries."""
+ drift_workflow = "Reporter-CESNET-Miners-Evaluation-Nettisa.ipynb"
+
+[dataset_drift_analysis.drifts_count]
+without_retraining = """
+{"Not Drifted": 101,
+"Drifted": 0}
+"""
+
+retraining = """
+{"Not Drifted": 101,
+"Drifted": 0}
+"""
+
+[dataset_drift_analysis.top_5]
+classes_without_retraining = """
+{"Other": 27, 
+"Miner": 21}
+"""
+
+classes_retrainig = """
+{"Other": 27, 
+"Miner": 21}
+"""
+
+features_without_retraining = """
+{"PACKETS": 0,
+ "PACKETS_REV": 0,
+ "nts_avg_dis": 0,
+ "nts_burtines": 0,
+ "nts_coef_variation": 0}
+"""
+
+features_retraining = """
+{"PACKETS": 0,
+ "PACKETS_REV": 0,
+ "nts_avg_dis": 0,
+ "nts_burtines": 0,
+ "nts_coef_variation": 0}
+"""
+
+[advanced_metrics]
+description = """
+ 
+Advanced metrics provides more detailed evalution of provided dataset to understand its content. List and meaning of advanced metrics is the following:
+  
+ * Permutation Slope: Shows linkage between data and labels. The higher metric the dataset and original labels have stronger relationship
+ * P Value Status: Categorical metric to detect permutation p-value rules
+ * Redundancy: Shows percentage of data samples that can we randomly deleted. The higher metric the more redundant samples
+ * Similarity: Shows similarity of selected (main) class with the rest of classes. If the metric is above 1, they are different. If the metric is below 1, there is big similarity between classes.
+Calculation is done based on the following tool: https://github.com/soukudom/NDVM
+"""
+#perqoda_permutation_slope = "n/a" 
+perqoda_permutation_slope = """ 0.40613056166256056 """
+p_value_status = """ Good """
+redundancy = """ 0.9296875 """
+similarity = """ 1.481978567658424 """
+advanced_metrics_workflow = "Metric-Showcase-Miner-Nettisa.ipynb"
+
+[dataset_comparison]
+description = "ML model comparison for this dataset"
+use_case = """ n/a """
+similar_dataset = """ 
+ * CESNET-MINER22.* (all childs)
+"""
+#perqoda_permutation_slope = "n/a" 

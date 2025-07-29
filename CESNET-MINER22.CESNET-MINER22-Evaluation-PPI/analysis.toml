@@ -1,0 +1,239 @@
+acronym_info = "Short name of the dataset, which is used as the unique identifier. E.g., CESNET_TLS_Year22"
+acronym = "CESNET-MINER22"
+acronym_aliases_info = "Additional alias for the Dataset Acronym (e.g. CESNET-TLS-Year22-XS). Used to filter the different subsection of the original dataset"
+acronym_aliases = ""
+title_info = "Full title of the dataset. E.g., CESNET-TLS-Year22"
+title = ""
+paper_title_info = "Full title of the original paper with the dataset"
+paper_title = ""
+authors = ""
+description_info = "High-level description of the dataset. E.g., TLS capture from CESNET2 backbone network over one year (2022). The capture was done using high-speed monitoring probes at the perimeter of CESNET2 network. This dataset provides realistic characteristics of traffic originating from various web browsers, operating systems, mobile devices, desktop machines, and both HTTP/1.1 and HTTP/2 protocols."
+description = "Representation of CESNET-MINER22 with PPI feature vector"
+format_info = "Dataset data format. E.g. json, csv, datazoo"
+format = "csv"
+doi_info = "DOI of this dataset"
+doi = ""
+origins_doi_info = "DOI of the original dataset"
+origins_doi = ""
+submitter = "Dominik Soukup <soukudom@cesnet.cz>"
+tags_info = "Use tags to categorize the dataset (comma separated)"
+tags = "FETA"
+url = ""
+versions = "CESNET-MINER22-Evaluation-PPI"
+date_submitted = 2025-04-15T21:13:49.407000
+analysis_status = "Completed"
+filename = "CESNET-MINER22.CESNET-MINER22-Evaluation-PPI.csv"
+files = ["get-dataset.py"]
+label_name = "label"
+
+[collection_workflow]
+ data_collection_tool = "script"
+ data_collection_year = "2022"
+ feature_extraction_tool_info = "Tool that converts dataset to feature dataset. If any."
+ feature_extraction_tool = "Nettisa script"
+ feature_extraction_tool_description = "the script get-dataset.py loads the original dataset and process Per Packet Information (PPI) to create feature vector"
+ capture_config_parameters_info = "specific parameters that were used to capture dataset or feature dataset" 
+ capture_config_parameters = "n/a"
+ real_dataset_info = "Source of the dataset. E.g., real environment, testbed or generated."
+ real_dataset = "yes"
+ annotation_info = "Description of the dataset annotation. E.g., manual, automatic"
+ annotation = "block-list IP"
+
+ 
+[generic_info]
+capture_dates_info = "When was the dataset captured/generated"
+capture_dates = "28.02.2022 - 31.03.2022"
+ classes = 2
+ features = 90
+ f1-score_info = "F1-score calculated based on NDVM tool [https://github.com/soukudom/NDVM]"
+ f1-score = "0.991008"
+ performance_metric_info = "Perfomance metric defined by the author. Please define full specification e.g., F1-weighted"
+ performance_metric_name = "n/a"
+ performance_metric_value = "n/a"
+ label_info = "Name of the field with label. In case this is unsupervised dataset, type None"
+ label = "label"
+ known_issues_info = """Description of indentified issues in the dataset"""
+ known_issues = """ n/a """
+ key_observations_info = "List of known errors, drifts, limits, ... of the dataset"
+ key_observations = """
+ * The dataset has 0 small classes, 476109 duplicated samples, 0 nan value
+ """
+ dataset_organization_info = "Structure of the dataset. E.g., per day, per capture, per device"
+ dataset_organization = "per capture"
+ dataset_organization_description_info = "Description of the content of the organization. Is there any metadata?"
+ dataset_organization_description = """ Dataset consists of two captures (design and evaluation) that are ready for deploymnet with ML. Everything is inluded in the dataset without metadata."""
+ dataset_documentation_info = "How to get started with the dataset. Ideally add example notebook."
+ dataset_documentation = """
+  Download the original CESNET-MINER22 dataset and run get-dataset.py script. Labels are encoded with `df.label.apply(lambda x: 0 if x == \"Miner\" else 1)`
+ """
+ used_dataset_info = "Script to get dataset for provided analysis"
+ used_dataset = "get-dataset.py"
+ dataset_application_info = "Where the dataset has been already applied."
+ dataset_application = """ n/a """
+
+
+ per_class_data = """{
+    "Other": "1329407",
+    "Miner": "695496"
+}"""
+
+per_feature_data = """ {
+"IPT_1": "Inter Packet Time for packet 1",
+"IPT_2": "Inter Packet Time for packet 2",
+"IPT_3": "Inter Packet Time for packet 3",
+"IPT_4": "Inter Packet Time for packet 4",
+"IPT_5": "Inter Packet Time for packet 5",
+"IPT_6": "Inter Packet Time for packet 6",
+"IPT_7": "Inter Packet Time for packet 7",
+"IPT_8": "Inter Packet Time for packet 8",
+"IPT_9": "Inter Packet Time for packet 9",
+"IPT_10": "Inter Packet Time for packet 10",
+"IPT_11": "Inter Packet Time for packet 11",
+"IPT_12": "Inter Packet Time for packet 12",
+"IPT_13": "Inter Packet Time for packet 13",
+"IPT_14": "Inter Packet Time for packet 14",
+"IPT_15": "Inter Packet Time for packet 15",
+"IPT_16": "Inter Packet Time for packet 16",
+"IPT_17": "Inter Packet Time for packet 17",
+"IPT_18": "Inter Packet Time for packet 18",
+"IPT_19": "Inter Packet Time for packet 19",
+"IPT_20": "Inter Packet Time for packet 20",
+"IPT_21": "Inter Packet Time for packet 21",
+"IPT_22": "Inter Packet Time for packet 22",
+"IPT_23": "Inter Packet Time for packet 23",
+"IPT_24": "Inter Packet Time for packet 24",
+"IPT_25": "Inter Packet Time for packet 25",
+"IPT_26": "Inter Packet Time for packet 26",
+"IPT_27": "Inter Packet Time for packet 27",
+"IPT_28": "Inter Packet Time for packet 28",
+"IPT_29": "Inter Packet Time for packet 29",
+"IPT_30": "Inter Packet Time for packet 30",
+"DIR_1": "Packet Direction for packet 1",
+"DIR_2": "Packet Direction for packet 2",
+"DIR_3": "Packet Direction for packet 3",
+"DIR_4": "Packet Direction for packet 4",
+"DIR_5": "Packet Direction for packet 5",
+"DIR_6": "Packet Direction for packet 6",
+"DIR_7": "Packet Direction for packet 7",
+"DIR_8": "Packet Direction for packet 8",
+"DIR_9": "Packet Direction for packet 9",
+"DIR_10": "Packet Direction for packet 10",
+"DIR_11": "Packet Direction for packet 11",
+"DIR_12": "Packet Direction for packet 12",
+"DIR_13": "Packet Direction for packet 13",
+"DIR_14": "Packet Direction for packet 14",
+"DIR_15": "Packet Direction for packet 15",
+"DIR_16": "Packet Direction for packet 16",
+"DIR_17": "Packet Direction for packet 17",
+"DIR_18": "Packet Direction for packet 18",
+"DIR_19": "Packet Direction for packet 19",
+"DIR_20": "Packet Direction for packet 20",
+"DIR_21": "Packet Direction for packet 21",
+"DIR_22": "Packet Direction for packet 22",
+"DIR_23": "Packet Direction for packet 23",
+"DIR_24": "Packet Direction for packet 24",
+"DIR_25": "Packet Direction for packet 25",
+"DIR_26": "Packet Direction for packet 26",
+"DIR_27": "Packet Direction for packet 27",
+"DIR_28": "Packet Direction for packet 28",
+"DIR_29": "Packet Direction for packet 29",
+"DIR_30": "Packet Direction for packet 30",
+"SIZE_1": "Packet Size for packet 1",
+"SIZE_2": "Packet Size for packet 2",
+"SIZE_3": "Packet Size for packet 3",
+"SIZE_4": "Packet Size for packet 4",
+"SIZE_5": "Packet Size for packet 5",
+"SIZE_6": "Packet Size for packet 6",
+"SIZE_7": "Packet Size for packet 7",
+"SIZE_8": "Packet Size for packet 8",
+"SIZE_9": "Packet Size for packet 9",
+"SIZE_10": "Packet Size for packet 10",
+"SIZE_11": "Packet Size for packet 11",
+"SIZE_12": "Packet Size for packet 12",
+"SIZE_13": "Packet Size for packet 13",
+"SIZE_14": "Packet Size for packet 14",
+"SIZE_15": "Packet Size for packet 15",
+"SIZE_16": "Packet Size for packet 16",
+"SIZE_17": "Packet Size for packet 17",
+"SIZE_18": "Packet Size for packet 18",
+"SIZE_19": "Packet Size for packet 19",
+"SIZE_20": "Packet Size for packet 20",
+"SIZE_21": "Packet Size for packet 21",
+"SIZE_22": "Packet Size for packet 22",
+"SIZE_23": "Packet Size for packet 23",
+"SIZE_24": "Packet Size for packet 24",
+"SIZE_25": "Packet Size for packet 25",
+"SIZE_26": "Packet Size for packet 26",
+"SIZE_27": "Packet Size for packet 27",
+"SIZE_28": "Packet Size for packet 28",
+"SIZE_29": "Packet Size for packet 29",
+"SIZE_30": "Packet Size for packet 30"
+}"""
+
+
+[dataset_drift_analysis]
+description = """Drift analysis is used to see behavior of the dataset over time. In this section, you can see a comparison of two workflows: Dataset without retraining and dataset with retraining based on drift detection described in https://github.com/FETA-Project/MFWDD.
+This description contains summary results of drift counts and features and classes that caused the most drifts. In case you would like to see more detailed insights behind these summary numbers, please visit the included jupyter notebook, where you can even run your own queries."""
+drift_workflow = "Reporter-CESNET-Miners-Evaluation-PPI.ipynb"
+
+[dataset_drift_analysis.drifts_count]
+without_retraining = """
+{"Not Drifted": 196,
+"Drifted": 0}
+"""
+
+retraining = """
+{"Not Drifted": 196,
+"Drifted": 0}
+"""
+
+[dataset_drift_analysis.top_5]
+classes_without_retraining = """
+{"Other": 14, 
+"Miner": 6}
+"""
+
+classes_retrainig = """
+{"Other": 14, 
+"Miner": 6}
+"""
+
+features_without_retraining = """
+{"DIR_1": 0,
+"DIR_10": 0,
+"DIR_11": 0,
+"DIR_12": 0,
+"DIR_13": 0}
+"""
+
+features_retraining = """
+{"DIR_1": 0,
+"DIR_10": 0,
+"DIR_11": 0,
+"DIR_12": 0,
+"DIR_13": 0}
+"""
+
+[advanced_metrics]
+description = """
+ 
+Advanced metrics provides more detailed evalution of provided dataset to understand its content. List and meaning of advanced metrics is the following:
+  
+ * Permutation Slope: Shows linkage between data and labels. The higher metric the dataset and original labels have stronger relationship
+ * P Value Status: Categorical metric to detect permutation p-value rules
+ * Redundancy: Shows percentage of data samples that can we randomly deleted. The higher metric the more redundant samples
+ * Similarity: Shows similarity of selected (main) class with the rest of classes. If the metric is above 1, they are different. If the metric is below 1, there is big similarity between classes.
+Calculation is done based on the following tool: https://github.com/soukudom/NDVM
+"""
+perqoda_permutation_slope = """ 0.4062875561016648 """
+p_value_status = """ Good """
+redundancy = """ 0.9296875 """
+similarity = """ 1.1426394625446972 """
+advanced_metrics_workflow = "Metric-Showcase-Miner-PPI.ipynb"
+
+[dataset_comparison]
+description = "ML model comparison for this dataset"
+use_case = """ n/a """
+similar_dataset = """ 
+ * CESNET-MINER22.* (all childs)
+"""

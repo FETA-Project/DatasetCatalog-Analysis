@@ -1,0 +1,141 @@
+acronym_info = "Short name of the dataset, which is used as the unique identifier. E.g., CESNET_TLS_Year22"
+acronym = "DoH-collection-of-datasets"
+acronym_aliases_info = "Additional alias for the Dataset Acronym (e.g. CESNET-TLS-Year22-XS). Used to filter the different subsection of the original dataset"
+acronym_aliases = ""
+title_info = "Full title of the dataset. E.g., CESNET-TLS-Year22"
+title = "Collection of datasets with DNS over HTTPS traffic"
+paper_title_info = "Full title of the original paper with the dataset"
+paper_title = "Collection of datasets with DNS over HTTPS traffic"
+authors = "Kamil Jeřábek, \r\nKarel Hynek, \r\nTomáš Čejka, \r\nOndřej Ryšavý"
+description_info = "High-level description of the dataset. E.g., TLS capture from CESNET2 backbone network over one year (2022). The capture was done using high-speed monitoring probes at the perimeter of CESNET2 network. This dataset provides realistic characteristics of traffic originating from various web browsers, operating systems, mobile devices, desktop machines, and both HTTP/1.1 and HTTP/2 protocols."
+description = ""
+format_info = "Dataset data format. E.g. json, csv, datazoo"
+format = ""
+doi_info = "DOI of this dataset"
+doi = ""
+origins_doi_info = "DOI of the original dataset"
+origins_doi = "https://doi.org/10.1016/j.dib.2022.108310"
+submitter = "Kamil Jerabek <kamil.jerabek@cesnet.cz>"
+tags_info = "Use tags to categorize the dataset (comma separated)"
+tags = "network traffic classification,  doh, pcap"
+url = "https://doi.org/10.1016/j.dib.2022.108310"
+date_submitted = 2024-09-20T14:54:14.286000
+# INTRO
+# - Please try to fill in as much fields as possible (it will be considered for overall evaluation of the dataset)
+# - Keywords with "_info" trailer are used as description of the keword in the Katoda UI
+# - If you need help with advanced metrics please let know soukudom@cesnet.cz
+# - If it is possible share your jupyter notebooks/scripts you are using. Upload them to the gitlab and you can reference it in the description. Katoda has build in Jupyter sever.
+# - Please share any feedback regarding this format to soukudom@cesnet.cz or use comments in the Katoda UI.
+#[collection_workflow]
+# data_collection_tool = "ipfixprobe"
+# data_collection_year = 2022
+# feature_extraction_tool_info = "Tool that converts dataset to feature dataset. If any."
+# feature_extraction_tool = "ipfixprobe PSTATS, TLS"
+# feature_extraction_tool_description = "ipfix probe generates extended flow format based on used modules in the ipfixprobe. Per Packet Information (PPI) is flattended and used as single features."
+# capture_config_parameters_info = "specific parameters that were used to capture dataset or feature dataset" 
+# capture_config_parameters = ""
+# real_dataset_info = "Source of the dataset. E.g., real environment, testbed or generated."
+# real_dataset = "yes"
+# annotation_info = "Description of the dataset annotation. E.g., manual, automatic"
+# annotation = "Automatic based on SNI field from TLS header"
+# [generic_info]
+# classes = 157
+# features = 130
+# f1-score_info = "F1-score calculated based on NDVM tool [https://github.com/soukudom/NDVM]"
+# f1-score = "0.998"
+# performance_metric_info = "Perfomance metric defined by the author. Please define full specification e.g., F1-weighted"
+# performance_metric_name = ""
+# performance_metric_value = ""
+# label_info = "Name of the field with label. In case this is unsupervised dataset, type None"
+# label = "APP"
+# known_issues_info = "List of known errors, drifts, limits, ... of the dataset"
+# known_issues = """
+# 
+# * ML performance drop without retrainig mainly in March. This drop is caused due to change in the network monitoring infrastructure. 
+# * Several days missing ['20220128', '20220129', '20220130', '20221212', '20221213', '20221229', '20221230', '20221231']
+# """
+# dataset_organization_info = "Structure of the dataset. E.g., per day, per capture, per device"
+# dataset_organization = "per day"
+# dataset_application_info = "Where the dataset has been already applied."
+# dataset_application = """
+#
+# - https://ieeexplore.ieee.org/document/10575630
+# """
+# dataset_organization_description = """Dataset is accessible via Datazoo framework which allows a convenient way to get data in python. Iteration is possible per day as author claims."""
+# dataset_documentation_info = "How to get started with the dataset. Ideally add example notebook."
+# dataset_documentation = """
+#  This dataset is best available with the Datazoo framework. Full documentation with general Getting Started is available here https://cesnet.github.io/cesnet-datazoo/getting_started/. Basic example of getting dataframe with feature vector is available here ... TBD ...
+# """
+# per_class_data = """
+#{"Thunderbird Telemetry": 273606, "Mozilla Push Service": 265064, "Mozilla Location Service": 254302, "Redmine (CESNET, MFF UK, KIV ZCU)": 258053, "Firefox Accounts": 109954, "Mozilla Telemetry": 246581, "Uschovna": 153303, "Mozilla Token Service": 111164, "Seznam Search": 104601, "R2D2": 260129, "SUKL eRecept": 346877, "Xiaomi Account API": 232842, "Google Authentication": 204358, "Datova Schranka": 319323, "Alza WebAPI": 132498, "MS Edge New Tab Page": 153583, "Google Translate": 24475, "Facebook Messenger": 89747, "CESNET Login": 24096, "Steam": 190628, "Firefox Remote Settings": 177685, "Facebook Web": 34486, "Mapy.cz": 35577, "Apple iTunes": 235402, "Google Drive": 94896, "Kaspersky": 160558, "MS Office 365": 45546, "Chrome Remote Desktop API": 465226, "Aukro Backend": 204496, "Instagram": 47897, "Fio IB": 129487, "Apple Weather": 139819, "MS OneDrive": 256840, "MS Windows Settings API": 230972, "Huawei Cloud Connectivity Check": 128129, "MS Weather": 159077, "Skype": 142913, "ESET Secure Authentication Provisioning Server (two-factor authentication)": 156972, "CESNET Kalendar": 29007, "Apple iCloud": 46147, "Bitdefender GravityZone": 140240, "Apple Siri": 65458, "Dropbox": 93512, "O2 TV": 27088, "Amazon Advertising": 90128, "ESET Dynamic Threat Defense": 19851, "Google User Location API": 79475, "Google Hangouts/Meets": 92242, "Discord": 44573, "Sumava Camdata": 21931, "Apple Updates": 54327, "Xbox Live": 113417, "UZIS API": 34361, "Bitdefender Nimbus": 82883, "Gmail": 56508, "Visual Studio Application Insights": 151074, "Github": 11819, "Malwarebytes Telemetry": 29789, "ESET Push Notification Service": 23275, "Bing": 28430, "Adobe Ads": 34327, "CESNET Gerrit": 5452, "Font Awesome": 13531, "SUKL Auth": 17998, "Google Connectivity Check": 8454, "Google Safe Browsing API": 38366, "ESET Data Framework (Anti-Theft, ESET License Administrator, Parental control, Web control)": 41366, "ESET Submit suspicious files and anonymous statistical information": 8451, "Opera Speed Dial": 16385, "CTU IDP2": 10804, "SSO VSB": 44500, "Facebook Media": 40763, "Apple Location Services": 36903, "MS Windows Defender": 75976, "CTU KOS": 7231, "Gitlab (3 providers)": 216318, "Autodesk API": 34937, "Unity Games": 20005, "Apple Pancake": 8628, "Riot Games": 15476, "Adobe Analytics": 31771, "Google Analytics & Ads": 12261, "CTU FEL Mail": 9689, "CTU Matrix Server": 11381, "Adobe Notifications": 11047, "Loggly": 19844, "Seznam Media": 10846, "Avast": 16252, "Twitch": 11493, "Alza CDN": 44633, "Google Search & Maps": 59391, "3-D Secure (3 providers)": 9645, "CESNET Perun": 5395, "King Games": 8280, "VZP B2B API": 13184, "Google Backend Services": 19674, "Super.cz Media": 17689, "Alza LogAPI": 40983, "Nvidia GFE Events": 22320, "Opera Sitecheck": 10821, "CTU KOS API": 11428, "McAfee CCS (Canadian Common Criteria Evaluation and Certification Scheme)": 88467, "SoundCloud": 14037, "Seznam Push Notifications": 11286, "INSIS VSE": 8291, "Slack": 11918, "Huawei Cloud Logservice": 17789, "MS Diagnostic Data": 33245, "National Digital Library": 9356, "Adobe Universal Search": 8814, "Airbank IB": 47405, "MS Teams": 4906, "ownCloud (CESNET, MUNI)": 8876, "Opera Autoupdate": 14608, "CESNET Filesender": 25424, "Seznam Email": 11090, "KB IB": 11731, "Rozhlas API": 15146, "Apple OCSP": 8785, "Seznam Login": 7761, "MS Windows Update": 17836, "SUKL API": 13788, "AppNexus": 11178, "Pubmatic": 10838, "McAfee Global Threat Intelligence": 26151, "Alza Banners": 9373, "MS Authentication": 15330, "Moodle (CTU, CZU, VUTBR)": 28119, "Youtube": 14232, "Google Play": 9344, "WhatsApp": 9009, "DoH (5 providers)": 13582, "Netflix": 11469, "Rubicon Project": 4878, "CESNET Nerd": 10130, "EA Games": 24868, "Spotify": 11215, "Adobe Document Cloud": 9711, "Amazon Alexa": 12439, "Opera Weather": 15795, "Facebook Graph API": 27102, "Docker Auth": 13162, "RB IB": 8539, "Xiaomi Tracking": 9776, "Katastr Nahlizeni": 5006, "Amazon Prime Video": 9458, "Ulozto": 9600, "Adobe Updater": 11660, "Vimeo": 2190, "Adobe Authentication Services": 10689, "MS Windows Push Notification Services": 7163, "MS Outlook": 8880, "Seznam SSP": 40466, "Google Fonts": 10983, "Zotero API": 7107, "VS Code Update": 7999, "UZIS OCKO": 7755}
+# """
+# per_feature_data = """ {"feature a": "feature a is ...", "feature b": "featre b is ..."}"""
+# [dataset_drift_analysis]
+# description = """Drift analysis is used to see behavior of the dataset over time. In this section, you can see a comparison of two workflows: Dataset without retraining and dataset with retraining based on drift detection described in https://github.com/FETA-Project/MFWDD.
+#This description contains summary results of drift counts and features and classes that caused the most drifts. In case you would like to see more detailed insights behind these summary numbers, please visit the included jupyter notebook, where you can even run your own queries."""
+# drift_workflow = "Katoda-tls-ppi-drift-insights.ipynb"
+#
+#[dataset_drift_analysis.drifts_count]
+#without_retraining = """
+#{"Not Drifted": 31,
+#"Drifted": 317}
+#"""
+#
+#retraining = """
+#{"Not Drifted": 333,
+#"Drifted": 13}
+#"""
+#
+#[dataset_drift_analysis.top_5]
+#classes_without_retraining = """
+#{"Firefox Accounts": 346,
+#"Redmine (CESNET, MFF UK, KIV ZCU)": 344,
+#"Alza WebAPI": 342,
+#"Mozilla Telemetry": 340,
+#"Xiaomi Account API": 339}
+#"""
+#
+#classes_retrainig = """
+#{"Firefox Accounts": 244,
+# "Apple Updates": 226,
+# "Mozilla Telemetry": 222,
+# "Aukro Backend": 216,
+# "Redmine (CESNET, MFF UK, KIV ZCU)": 215}
+#"""
+#features_without_retraining = """
+#{"SIZE_4": 326,
+#"DIR_2": 322,
+#"PPI_LEN":315,
+#"DIR_6": 310,
+#"SIZE_10": 304}
+#"""
+#
+#features_retraining = """
+# {"SIZE_1": 91,
+# "DIR_30": 53,
+# "DIR_29": 52,
+# "DIR_28": 47,
+# "DIR_27": 43}
+#"""
+#
+#[advanced_metrics]
+#description = """
+# 
+#Advanced metrics provides more detailed evalution of provided dataset to understand its content. List and meaning of advanced metrics is the following:
+#  
+#- Permutation Slope: Shows linkage between data and labels. The higher metric the dataset and original labels have stronger relationship
+#- P Value Status: Categorical metric to detect permutation p-value rules
+#- Redundancy: Shows percentage of data samples that can we randomly deleted. The higher metric the more redundant samples
+#- Similarity: Shows similarity of selected (main) class with the rest of classes. If the metric is above 1, they are different. If the metric is below 1, there is big similarity between classes.
+#Calculation is done based on the following tool: https://github.com/soukudom/NDVM
+#"""
+#perqoda_permutation_slope = "0.526" 
+#p_value_status = "good"
+#redundancy = "0.967"
+#similarity = "4.093"
+#advanced_metrics_workflow = "tbd"
+#
+#[dataset_comparison]
+#description = """ 
+#Currently there is no dataset from the different time or network segment to run this evaluation.
+#"""

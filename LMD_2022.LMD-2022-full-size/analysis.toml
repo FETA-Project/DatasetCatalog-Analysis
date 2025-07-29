@@ -1,0 +1,45 @@
+acronym = "LMD_2022"
+acronym_aliases = "LMD-2022-full-size"
+title = "Revisiting the Detection of Lateral Movement through Sysmon"
+paper_title = "Revisiting the Detection of Lateral Movement through Sysmon"
+authors = "Christos Smiliotopoulos"
+description = "LM Datasets (LMD) is Windows XML EventLog (EVTX) originated dataset and benchmark corpus comprising of Sysmon logs. The 2022 LMD version (LMD-2022) incorporates normal and malicious traffic logs originated from the execution of nine state-of-the-art LM techniques, including four variants of the so-called * Exploitation of Remote Services * LM methodology and five equivalents * credential exploitation techniques * . The attacks were recorded under the MS Windows Domain testbed."
+doi = "https://doi.org/10.3390/app12157746"
+origins_doi = "https://doi.org/10.3390/app12157746"
+date_submitted = 2024-09-23T12:48:56.440000
+submitter = "Dominik Soukup <soukudom@cesnet.cz>"
+status = "accepted"
+tags = "malware"
+url = ""
+format = "csv"
+# [generic_info]
+# data_collection_year = "2022"
+# data_collection_tool = "CICFlowMeter-V3"
+# feature_extraction_tool = "CICFlowMeter-V3"
+# classes = 80
+# features = 80
+# known_issues = """
+# Dataset is affected by issues described in: https://intrusion-detection.distrinet-research.be/WTMC2021/extended_doc.html
+# Wrong feature name: Unnamed: 0
+# Network features contains raw ip addresses and ports which are not ideal
+# Unstandard csv headers format (leading space)
+# """
+# dataset_organization = """
+# - e.g. per day
+# - e.g. Each class per file
+# Notes
+# """
+# per_class_data = """
+# {"Apple iTunes": 926,
+#  "Google Authentication": 872,
+#  "SUKL eRecept": 800,
+#  "Xiaomi Account API": 710,
+#  "Kaspersky": 700,
+#  "Redmine (CESNET, MFF UK, KIV ZCU)": 682}
+# """
+# [dataset_analysis]
+# drift_workflow = "name_of_jupyter_notebook.ipynb"
+# drift_manual = "name_of_jupyter_notebook.ipynb"
+# redundancy = """
+# ...
+# """

@@ -1,0 +1,73 @@
+acronym = "LMD-2023"
+acronym_aliases = "LMD-2023-full-size"
+title = "Lateral Movement Datasets"
+paper_title = "Revisiting the Detection of Lateral Movement through Sysmon"
+authors = "Christos Smiliotopoulos "
+description = "LM Datasets (LMD) is Windows XML EventLog (EVTX) originated dataset and benchmark corpus comprising of Sysmon logs.\r\nThe 2022 LMD version (LMD-2022) incorporates normal and malicious traffic logs originated from the execution of nine state-of-the-art LM techniques, including four variants of the so-called * Exploitation of Remote Services * LM methodology and five equivalents * credential exploitation techniques * . The attacks were recorded under the MS Windows Domain testbed. "
+doi = "https://doi.org/10.3390/app12157746"
+origins_doi = "https://doi.org/10.3390/app12157746"
+date_submitted = 2024-09-19T09:02:57.028045Z
+submitter = "Dominik Soukup <soukudom@fit.cvut.cz>"
+status = "accepted"
+tags = "malware"
+filename = "LMD-2023.rar"
+url = ""
+
+ [generic_info]
+ data_collection_year = "2022"
+ data_collection_tool = "Sysmon"
+ feature_extraction_tool = "n/a"
+ classes = 16
+ features = 93
+ known_issues = """
+ 
+ - not clear how preprocess was calculated
+ - not clear what label data means
+"""
+
+# Dataset is affected by issues described in: https://intrusion-detection.distrinet-research.be/WTMC2021/extended_doc.html
+# Wrong feature name: Unnamed: 0
+# Network features contains raw ip addresses and ports which are not ideal
+# Unstandard csv headers format (leading space)
+# """
+ dataset_organization = """
+- dataset is based on unknown splits organized in structured directory with not clear but consistent schema
+ """
+# - e.g. per day
+# - e.g. Each class per file
+# Notes
+# """
+# per_class_data = """
+# {"Apple iTunes": 926,
+#  "Google Authentication": 872,
+#  "SUKL eRecept": 800,
+#  "Xiaomi Account API": 710,
+#  "Kaspersky": 700,
+#  "Redmine (CESNET, MFF UK, KIV ZCU)": 682}
+# """
+
+ [dataset_analysis]
+
+ drift_workflow = "TBD"
+# drift_manual = "name_of_jupyter_notebook.ipynb"
+# ...
+# """
+
+[advanced_metrics]
+
+"Max Clf Score" = 0.9981429535303019
+perqoda_permutation_slope = 0.5439
+redundancy = 0.18
+similarity = 41.6226
+
+# drift_manual = "name_of_jupyter_notebook.ipynb"
+# redundancy = """
+# ...
+# """
+# complexity = """
+# ...
+# """
+
+
+
+

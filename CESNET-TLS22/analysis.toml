@@ -1,0 +1,171 @@
+acronym_info = "Short name of the dataset, which is used as the unique identifier. E.g., CESNET_TLS_Year22"
+acronym = "CESNET-TLS22"
+acronym_aliases_info = "Additional alias for the Dataset Acronym (e.g. CESNET-TLS-Year22-XS). Used to filter the different subsection of the original dataset"
+acronym_aliases = ""
+title_info = "Full title of the dataset. E.g., CESNET-TLS-Year22"
+title = ""
+paper_title_info = "Full title of the original paper with the dataset"
+paper_title = "Fine-grained TLS services classification with reject option"
+authors = ""
+description_info = "High-level description of the dataset. E.g., TLS capture from CESNET2 backbone network over one year (2022). The capture was done using high-speed monitoring probes at the perimeter of CESNET2 network. This dataset provides realistic characteristics of traffic originating from various web browsers, operating systems, mobile devices, desktop machines, and both HTTP/1.1 and HTTP/2 protocols."
+description = "TLS capture from CESNET2 backbone network over 14 days (2021), consisting of 141 million network flows, and having 191 fine-grained service labels. The data was captured in the flow monitoring infrastructure of the CESNET2 network. The capturing was done for two weeks between 4.10.2021 and 17.10.2021."
+format_info = "Dataset data format. E.g. json, csv, datazoo"
+format = "csv"
+doi_info = "DOI of this dataset"
+doi = "https://doi.org/10.1016/j.comnet.2022.109467"
+origins_doi_info = "DOI of the original dataset"
+origins_doi = ""
+submitter = "Dominik Soukup <soukudom@fit.cvut.cz>"
+tags_info = "Use tags to categorize the dataset (comma separated)"
+tags = "FETA"
+url = "https://doi.org/10.5281/zenodo.7965515"
+versions = ""
+date_submitted = 2025-02-25T08:21:41.888000
+analysis_status = "In Progress"
+files = ["get-dataset.py"]
+label_name = "APP,CATEGORY"
+filename = ""
+
+[collection_workflow]
+ data_collection_tool = "ipfixprobe"
+ data_collection_year = 2021
+ feature_extraction_tool_info = "Tool that converts dataset to feature dataset. If any."
+ feature_extraction_tool = "ipfixprobe PSTATS, TLS"
+ feature_extraction_tool_description = "ipfix probe generates extended flow format based on used modules in the ipfixprobe. Per Packet Information (PPI) is flattended and used as single features."
+ capture_config_parameters_info = "specific parameters that were used to capture dataset or feature dataset" 
+ capture_config_parameters = ""
+ real_dataset_info = "Source of the dataset. E.g., real environment, testbed or generated."
+ real_dataset = "yes"
+ annotation_info = "Description of the dataset annotation. E.g., manual, automatic"
+ annotation = "Automatic based on SNI field from TLS header"
+ 
+ [generic_info]
+capture_dates_info = "When was the dataset captured/generated"
+capture_dates = "4.10.2021 - 17.10.2021"
+classes = 157
+features = 191
+f1-score_info = "F1-score calculated based on NDVM tool [https://github.com/soukudom/NDVM]"
+f1-score = "n/a"
+ performance_metric_info = "Perfomance metric defined by the author. Please define full specification e.g., F1-weighted"
+ performance_metric_name = "F1"
+ performance_metric_value = "94.20"
+ label_info = "Name of the field with label. In case this is unsupervised dataset, type None"
+ label = "APP, CATEGORY"
+ known_issues_info = """Description of indentified issues in the dataset"""
+ known_issues = """
+ 
+ """
+ key_observations_info = "List of known errors, drifts, limits, ... of the dataset"
+ key_observations = """
+  * The data collection process performs dynamic flow sampling to mitigate imbalances between the top services and the rest.
+  * TLS flows with less than three packets and uni-directional flows are omitted.
+  * Large dataset (140-million-flow) with a short period (two weeks) that does not have to be enough for long-term/trend analysis
+ """
+ dataset_organization_info = "Structure of the dataset. E.g., per day, per capture, per device"
+ dataset_organization = "per day"
+ dataset_organization_description_info = "Description of the content of the organization. Is there any metadata?"
+ dataset_organization_description = """Dataset is accessible via Datazoo framework which allows a convenient way to get data in python including various selection options. Iteration is possible per day as author claims."""
+ dataset_documentation_info = "How to get started with the dataset. Ideally add example notebook."
+ dataset_documentation = """
+  This dataset is best available with the Datazoo framework. Full documentation with general Getting Started is available here https://cesnet.github.io/cesnet-datazoo/getting_started/. Basic example of getting dataframe with feature vector is available here ...
+ """
+ used_dataset_info = "Script to get dataset for provided analysis"
+ used_dataset = "get-dataset.py"
+ dataset_application_info = "Where the dataset has been already applied."
+ dataset_application = """
+ * [1][] https://doi.org/10.1016/j.comnet.2023.110147; NetTiSA: Extended IP flow with time-series features for universal bandwidth-constrained high-speed network traffic classification; [cited; considered in future work][]
+ * [2][] https://doi.org/10.1016/j.comnet.2024.110374; MEMENTO: A novel approach for class incremental learning of encrypted traffic; [cited][]
+ * [3][] https://doi.org/10.1016/j.dib.2023.108888; CESNET-QUIC22: A large one-month QUIC network traffic dataset from backbone lines; [cited][]
+ * [4][] disertation thesis; Big Data Analysis Techniques for Network Traffic Monitoring: The Story of DNS Over HTTPS Detection; [cited][]
+ * [5][] https://doi.org/10.48550/arXiv.2310.17025; netFound: Foundation Model for Network Security; [cited][]
+ * [6][] https://doi.org/10.48550/arXiv.2502.12930; Universal Embedding Function for Traffic Classification via QUIC Domain Recognition Pretraining: A Transfer Learning Success; [evaluation of the proposed method][]
+ * [7][] https://doi.org/10.1145/3580305.3599762; A Lightweight, Efficient and Explainable-by-Design Convolutional Neural Network for Internet Traffic Classification; [cited][]
+ * [8][] https://doi.org/10.1145/3618257.3624820; Replication: Contrastive Learning and Data Augmentation in Traffic Classification Using a Flowpic Input Representation; [cited][]
+ * [9][] https://doi.org/10.1145/3630050.3630176; DataZoo: Streamlining Traffic Classification Experiments; [CESNET-TLS22 dataset is included in the initial DataZoo version][]
+ * [10][] 10.1109/NOMS59830.2024.10575630; Analysis of Statistical Distribution Changes of Input Features in Network Traffic Classification Domain; [cited][]
+ * [11][] 10.23919/SpliTech58164.2023.10193216; Augmenting Monitoring Infrastructure For Dynamic Software-Defined Networks; [cited][] 
+[only cited]
+ * [12][] 10.1109/SoutheastCon52093.2024.10500148; A Framework for Classifying Applications from Raw Network Traffic Traces; [cited][] 
+ * [13][] 10.1109/SWC62898.2024.00369; A Survey of Machine Learning-based TLS 1.3 Encrypted Traffic Analysis; [cited][]
+ * [14][] 10.1109/COMST.2024.3504955; A Survey on Explainable Artificial Intelligence for Internet Traffic Classification and Prediction, and Intrusion Detection; [cited and considered in the survey][] 
+ * [15][] 10.1109/ACCESS.2023.3275744; DNS Over HTTPS Detection Using Standard Flow Telemetry; [cited][] 
+ * [16][] 10.1109/ACCESS.2024.3469730; Early Traffic Classification With Encrypted ClientHello: A Multi-Country Study; [cited][]
+ * [17][] Review Challenges and Advances in Analyzing TLS 1.3-Encrypted Traffic: A Comprehensive Survey; [...][] 
+[120] Application Classification [7,120] Application Classification [119] Service Classification [123] Service Classification [115] Service Classification [116] Protocol Identification [118] Web Fingerprinting [121] Phishing Detection [123] Service Classification [121] Phishing Detection
+ * [18][] Encrypted traffic classification: the QUIC case; [cited][]
+ * [19][] Concept drift and model degradation in network traffic classification; [cited][]
+ * [20][] LGBM2VHDL: Mapping of LightGBM Models to FPGA; [cited][] 
+ * [21][] Look at my Network: An insight into the ISP Backbone Traffic; [...][] 
+ * [22][] Many or Few Samples? Comparing Transfer, Contrastive and Meta-Learning in Encrypted Traffic Classification; [cited][]
+ * [23][] MFWDD: Model-based Feature Weight Drift Detection Showcased on TLS and QUIC Traffic; [cited][]
+ * [24][] Network Traffic Classification based on Single Flow Time Series Analysis; [cited][]
+ * [25][] I know I don’t know: an evidential deep learning framework for traffic classification; [cited][] 
+ * [26][] CESNET-TLS-Year22: A year-spanning TLS network traffic dataset from backbone lines; [...][]
+classification task using TLS traffic data
+ * [27][] CESNET-TimeSeries24: Time Series Dataset for Network Traffic Anomaly Detection and Forecasting; [cited][]
+ * [28][] TCI: A System for Distributed Network Monitoring, Troubleshooting and Dataset Creation; [cited][]
+ * [29][] Towards reusable models in traffic classification; [...][] 
+network data flow classification, TLS/QUIC service discovery classification task, application: machine learning
+ * [30][] Unevenly Spaced Time Series from Network Traffic; [cited][] 
+ * [31] User Behavior Detection Using Multi-Modal Signatures of Encrypted Network Traffic; [cited][]
+ """
+
+
+ per_class_data = """
+ Not evaluated
+ """
+
+ per_feature_data = """ 
+{
+    "ID": "Unique identifier",
+    "BYTES": "Number of transmitted bytes from client to server",
+    "BYTES_REV": "Number of transmitted bytes from server to client",
+    "PACKETS": "Number of packets transmitted from client to server",
+    "PACKETS_REV": "Number of packets transmitted from server to client",
+    "DURATION": "Duration of the flow in seconds",
+    "PPI": "Packet metadata sequence in the format: [[inter-packet times], [packet directions], [packet sizes]]",
+    "PPI_LEN": "Number of packets in the PPI sequence",
+    "PPI_DURATION": "Duration of the PPI sequence in seconds",
+    "PPI_ROUNDTRIPS": "Number of roundtrips in the PPI sequence",
+    "APP": "Web service label",
+    "CATEGORY": "Service category",
+    "TCP_FLAGS": "TCP flags sent from client to server",
+    "TCP_FLAGS_REV": "TCP flags sent from server to client",
+    "FLAG_CWR": "Presence of the CWR flag",
+    "FLAG_CWR_REV": "Presence of the CWR flag in the reverse direction",
+    "FLAG_ECE": "Presence of the ECE flag",
+    "FLAG_ECE_REV": "Presence of the ECE flag in the reverse direction",
+    "FLAG_URG": "Presence of the URG flag",
+    "FLAG_URG_REV": "Presence of the URG flag in the reverse direction",
+    "FLAG_ACK": "Presence of the ACK flag",
+    "FLAG_ACK_REV": "Presence of the ACK flag in the reverse direction",
+    "FLAG_PSH": "Presence of the PSH flag",
+    "FLAG_PSH_REV": "Presence of the PSH flag in the reverse direction",
+    "FLAG_RST": "Presence of the RST flag",
+    "FLAG_RST_REV": "Presence of the RST flag in the reverse direction",
+    "FLAG_SYN": "Presence of the SYN flag",
+    "FLAG_SYN_REV": "Presence of the SYN flag in the reverse direction",
+    "FLAG_FIN": "Presence of the FIN flag",
+    "FLAG_FIN_REV": "Presence of the FIN flag in the reverse direction"
+}
+"""
+
+
+ [dataset_drift_analysis]
+ description = """ Not evaluated """
+
+[advanced_metrics]
+description = """ Not evaluated"""
+
+[dataset_comparison]
+description = "ML model comparison for this dataset"
+use_case = """
+* Universal Embedding Function for Traffic Classification via QUIC Domain Recognition Pretraining: A Transfer Learning Success; accuracy 95.24%; embedding fuction in Deep Learning architecture
+"""
+similar_dataset = """ 
+* UCDAVIS19
+* UTMOBILENET21
+* MIRAGE19
+* MIRAGE22
+* CESNET-TLS22 """
+

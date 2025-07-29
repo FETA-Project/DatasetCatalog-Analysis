@@ -1,0 +1,51 @@
+# title = "dataset name"
+# requester_name = "admin"
+# requester_mail = "admin@admin"
+# doi = "dataset/doi"
+# origins_doi = "dataset_origin/doi"
+# description = "dataset description"
+
+ [generic_info]
+ data_collection_year = "2024"
+# data_collection_tool = "CICFlowMeter-V3"
+# feature_extraction_tool = "CICFlowMeter-V3"
+ classes = 5
+ features = 6
+ known_issues = """
+ 
+ - dataset includes index column
+ - features are almost categorical and probaly "if-else" classifier will provide good results
+"""
+dataset_organization = """
+ 
+- different files per capture
+- captures are random
+"""
+# Notes
+# """
+# per_class_data = """
+# {'Apple iTunes': 926,
+#  'Google Authentication': 872,
+#  'SUKL eRecept': 800,
+#  'Xiaomi Account API': 710,
+#  'Kaspersky': 700,
+#  'Redmine (CESNET, MFF UK, KIV ZCU)': 682}
+# """
+
+# [dataset_analysis]
+# drift_workflow = "name_of_jupyter_notebook.ipynb"
+# drift_manual = "name_of_jupyter_notebook.ipynb"
+# redundancy = """
+# ...
+# """
+# complexity = """
+# ...
+# """
+
+[advanced_metrics]
+summary = """ the values are in order local1.csv, sub1.csv, sub4.csv"""
+perqoda_permutation_slope = """[1.6180, 1.523, 1.534]"""
+p_value_status = """["Mid", "Mid", "Good"]"""
+redundancy = """[0.992, 0.992, 0.992]"""
+similarity = """[2.795, 1.462, 1.584]"""
+report = "TBA"
