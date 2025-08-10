@@ -1707,8 +1707,7 @@ label_name = "DoH"
    "vkvd128.mycdn.me": "1"
  }"""
  
-  per_feature_data = """ 
- {
+  per_feature_data = """{
    "DST_IP": "The destination IP address.",
    "SRC_IP": "The source IP address.",
    "BYTES": "The total number of bytes transmitted from the source to the destination.",
@@ -1725,8 +1724,7 @@ label_name = "DoH"
    "TLS_ALPN": "The value of the Application-Layer Protocol Negotiation (ALPN) extension sent by the server.",
    "TLS_JA3": "The JA3 fingerprint, which is a unique hash of the SSL/TLS client-side information.",
    "TLS_SNI": "The value of the Server Name Indication (SNI) extension sent by the client."
- }
- """
+ }"""
  
   [dataset_drift_analysis]
   description = """Drift analysis is used to see behavior of the dataset over time. In this section, you can see a comparison of two workflows: Dataset without retraining and dataset with retraining based on drift detection described in https://github.com/FETA-Project/DatasetCatalog-Tools/tree/main/drift-analyzer.
