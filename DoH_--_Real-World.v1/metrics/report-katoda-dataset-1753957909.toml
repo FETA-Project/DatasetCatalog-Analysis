@@ -1,104 +1,41 @@
-acronym_info = "Short name of the dataset, which is used as the unique identifier. E.g., CESNET_TLS_Year22"
-acronym = "DoH -- Real-World"
-acronym_aliases_info = "Additional alias for the Dataset Acronym (e.g. CESNET-TLS-Year22-XS). Used to filter the different subsection of the original dataset"
-acronym_aliases = ""
-title_info = "Full title of the dataset. E.g., CESNET-TLS-Year22"
-title = ""
-paper_title_info = "Full title of the original paper with the dataset"
-paper_title = "Collection of datasets with DNS over HTTPS traffic"
-authors = "Kamil Jeřábek,   Karel Hynek,   Tomáš Čejka,   Ondřej Ryšavý"
-description_info = "High-level description of the dataset. E.g., TLS capture from CESNET2 backbone network over one year (2022). The capture was done using high-speed monitoring probes at the perimeter of CESNET2 network. This dataset provides realistic characteristics of traffic originating from various web browsers, operating systems, mobile devices, desktop machines, and both HTTP/1.1 and HTTP/2 protocols."
-description = "The collection of datasets contains DoH and HTTPS traffic that was captured in a real large ISP network. The data are provided in the form of PCAP files. However, since we needed to anonymize the real captures, we also provided TLS enriched flow data that are generated with opensource ipfixprobe flow exporter. Other than TLS related information is not relevant since the dataset comprises only encrypted TLS traffic. The TLS enriched flow data are provided in the form of CSV files with the following columns."
-format_info = "Dataset data format. E.g. json, csv, datazoo"
-format = "pcap"
-doi_info = "DOI of this dataset"
-doi = "10.5281/zenodo.5956043"
-origins_doi_info = "DOI of the original dataset"
-origins_doi = ""
-submitter = "Karel Hynek <Karel.Hynek@cesnet.cz>"
-tags_info = "Use tags to categorize the dataset (comma separated)"
-tags = ""
-url = ""
-
-
 [collection_workflow]
- data_collection_tool = "ipfixprobe"
- data_collection_year = 2021
- feature_extraction_tool_info = "Tool that converts dataset to feature dataset. If any."
- feature_extraction_tool = "ipfixprobe with TLS plugin"
- feature_extraction_tool_description = "ipfix probe generates extended flow format based on used modules in the ipfixprobe. Per Packet Information (PPI) is flattended and used as single features."
- capture_config_parameters_info = "specific parameters that were used to capture dataset or feature dataset" 
- capture_config_parameters = """
- * /24, and /22 IPv4 address ranges assigned to the university campus
- * 100 Gbps traffic
- * editcap for deduplication
- * parallel SSH to run command on networking meter points
-  """"
- real_dataset_info = "Source of the dataset. E.g., real environment, testbed or generated."
- real_dataset = "yes"
- annotation_info = "Description of the dataset annotation. E.g., manual, automatic"
- annotation = "The data were annotated automaticaly based on the information in the TLV headers and TLS metadata such as SNI field from TLS SNI extensions and JA3 fingerprint. This was done by parsing each packet to extract these specific fields, which are then included in the CSV files for analysis."
- 
- [generic_info]
- capture_dates_info = "When was the dataset captured/generated"
- capture_dates = "June - October 2021"
- classes = 1600
- features = 15
- f1-score_info = "F1-score calculated based on NDVM tool [https://github.com/FETA-Project/DatasetCatalog-Tools/tree/main/ndvm]"
- f1-score = "n/a"
- performance_metric_info = "Perfomance metric defined by the author. Please define full specification e.g., F1-weighted"
- performance_metric_name = "n/a"
- performance_metric_value = "n/a"
- label_info = "Name of the field with label. In case this is unsupervised dataset, type None"
- label = "TLS_SNI"
- known_issues_info = """Description of indentified issues in the dataset"""
- known_issues = """ none """
- key_observations_info = "List of known errors, drifts, limits, ... of the dataset"
- key_observations = """
- * This paper contains collection of datasets that consist of network traffic generated in a controlled environment and traffic captured from a real ISP network. For each dataset there is a dedicated dataset report to track specific details and evaluations for each dataset.
- * The dataset is divided in separated files based on the captured traffic (main classes are DoH and TLS)
- * Due to TLS based traffic labeled by SNI and JA3 there is large amout of classes with small nuber of samples
- * The real-world traffic captures were anonymized to protect the privacy of real users (packets have no payload, clients IP, and MAC addresses were hashed)
- * The dataset contains pcap and csv files from ipfixprobe exported
- * There is no explicit filtering of the traffic. DoH is very specific class and TLS is very generic. The traffic patterns can be very different with can simplify the classification on this dataset.
- * The dataset has 513 small classes, 394 duplicated samples, 311963 nan value 
- * The Real-World Data contains inaccurate interarrival time values between packets in the opposite directions — packets in the same direction are always routed via the same monitoring points. According to long-term measurement in the CESNET2 network, 40 % of all 443/TCP connections are routed asymmetrically, thus affected by the time shifts. However, the timestamp inaccuracies are small, and they do not cause any significant disturbances in packet order within the connection (HTTPS requests are always before HTTPS responses)
- * The most of the DoH traffic is serviced by two major DoH resolvers [5][]
- * DoH detectors achieved better performance when trained and tested on the Real-World dataset compared to the Generated one. [5][]
- * It's challenging to move this dataset between different networks. Most of the ML models proved to be unusable in real-world deployment when trained on the lab-created dataset or generally when trained on the data from one particular computer network and deployed in a different one. [5][]
- * The dataset showed low ability to drift. After one year ∼ 0.01 of F1 score drop and 2.4 percentage point drop in accuracy. [0][]
- """
- dataset_organization_info = "Structure of the dataset. E.g., per day, per capture, per device"
- dataset_organization = "file per capture"
- dataset_organization_description_info = "Description of the content of the organization. Is there any metadata?"
- dataset_organization_description = """The DoH captures contain only DNS over HTTPS communication, obtained by filtering connections using the IP addresses of known DoH resolvers. The HTTPS traffic captures contain all communication transmitted over standard HTTPS port TCP/443, including DoH since DNS over HTTPS also runs on standard HTTPS port. Each capture is in the dedicated file."""
- dataset_documentation_info = "How to get started with the dataset. Ideally add example notebook."
- dataset_documentation = """
-  There is no getting started guide
- """
- used_dataset_info = "Script to get dataset for provided analysis"
- used_dataset = "get-dataset.py"
- dataset_application_info = "Where the dataset has been already applied."
- dataset_application = """
-* [0][] DNS Over HTTPS Detection Using Standard Flow Telemetry; [Provides more detailed look in the dataset content. With selected features achieved 97.3 F1 score. Authors also suggested filtring the dataset based on the number of packtes.][]
-* [1][] FSDC: Flow Samples and Dimensions Compression for Efficient Detection of DNS-over-HTTPS Tunnels; [only cited][]
-* [2][] The Reality of Internet Infrastructure and Services Defacement: A Second Look at Characterizing Web-Based Vulnerabilities; [only cited][]
-* [3][] Machine Learning Metrics for Network Datasets Evaluation; [only cited][]
-* [4][] Malicious Traffic Detection in DNS over HTTPS (DoH): Edge Prediction with Graph Convolutional Network; [only cited][]
-* [5][] Comparative Analysis of DNS Over HTTPS Detectors; [Follow up paper with new detection and extension of the dataset.][]
-* [6][] Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study; [only cited][]
-* [7][] Real-Time Analysis of Encrypted DNS Traffic for Threat Detection; [only cited][]
-* [8][] Network Traffic Classification based on Single Flow Time Series Analysis; [Proposes a novel flow extension for traffic features based on the time series analysis of the Single Flow Time series. ][]
-* [9][] NinjaDoH: A Censorship-Resistant Moving Target DoH Server Using Hyperscalers and IPNS; [only cited][]
-* [10][] MTL-DoHTA: Multi-Task Learning-Based DNS over HTTPS Traffic Analysis for Enhanced Network Security; [only cited][]
-* [11][] From Bytes to Insights: A Systematic Literature Review on Unraveling IDS Datasets for Enhanced Cybersecurity Understanding; [only cited][]
-* [12][] TrafficGrinder: A 0-RTT-Aware QUIC Load Balancer; [only cited][]
-* [13][] netFound: Foundation Model for Network Security; [only cited][]
-* [14][] METC: A Hybrid Deep Learning Framework for Cross-Network Encrypted DNS over HTTPS Traffic Detection and Tunnel Identification; [only cited][]
-* [15][] NetTiSA: Extended IP flow with time-series features for universal bandwidth-constrained high-speed network traffic classification; [compares ML performance of original feature vector with NetTiSA feature vector][]
- """
+data_collection_tool = """  """
+data_collection_year = """  """
+feature_extraction_tool_info = """ Tool that converts dataset to feature dataset. If any. """
+feature_extraction_tool = """  """
+feature_extraction_tool_description = """  """
+capture_config_parameters_info = """ specific parameters that were used to capture dataset or feature dataset """
+capture_config_parameters = """  """
+real_dataset_info = """ Source of the dataset. E.g., real environment, testbed or generated. """
+real_dataset = """  """
+annotation_info = """ Description of the dataset annotation. E.g., manual, automatic """
+annotation = """  """
 
- per_class_data = per_class_data = """{
+[generic_info]
+classes = """ 1600 """
+features = """ 15 """
+f1-score_info = """ F1-score calculated based on NDVM tool [https://github.com/soukudom/NDVM] """
+f1-score = """  """
+performance_metric_info = """ Perfomance metric defined by the author. Please define full specification e.g., F1-weighted """
+performance_metric_name = """  """
+performance_metric_value = """  """
+label_info = """ Name of the field with label. In case this is unsupervised dataset, type None """
+label = """  """
+known_issues_info = """ Description of indentified issues in the dataset """
+known_issues = """   """
+key_observations_info = """ List of known errors, drifts, limits, ... of the dataset """
+key_observations = """  *  The dataset has 513 small classes, 394 duplicated samples, 311963 nan value """
+dataset_organization_info = """ Structure of the dataset. E.g., per day, per capture, per device """
+dataset_organization = """  """
+dataset_organization_description_info = """ Description of the content of the organization. Is there any metadata? """
+dataset_organization_description = """   """
+dataset_documentation_info = """ How to get started with the dataset. Ideally add example notebook. """
+dataset_documentation = """   """
+used_dataset_info = """ Script to get dataset for provided analysis """
+used_dataset = """ get-dataset.py """
+dataset_application_info = """ Where the dataset has been already applied. """
+dataset_application = """   """
+per_class_data = """{
   "dns.google": "183920",
   "dns.google.com": "39109",
   "doh.li": "38859",
@@ -1700,67 +1637,36 @@ url = ""
   "trouter-azsc-euno-0-b.trouter.skype.com": "1",
   "vkvd128.mycdn.me": "1"
 }"""
+per_feature_data = """{
+  "DST_IP": "",
+  "SRC_IP": "",
+  "BYTES": "",
+  "BYTES_REV": "",
+  "TIME_FIRST": "",
+  "TIME_LAST": "",
+  "PACKETS": "",
+  "PACKETS_REV": "",
+  "DST_PORT": "",
+  "SRC_PORT": "",
+  "PROTOCOL": "",
+  "TCP_FLAGS": "",
+  "TCP_FLAGS_REV": "",
+  "TLS_ALPN": "",
+  "TLS_JA3": "",
+  "TLS_SNI": ""
+}"""
 
- per_feature_data = """ 
-{
-  "DST_IP": "The destination IP address.",
-  "SRC_IP": "The source IP address.",
-  "BYTES": "The total number of bytes transmitted from the source to the destination.",
-  "BYTES_REV": "The total number of bytes transmitted from the destination back to the source.",
-  "TIME_FIRST": "A timestamp indicating the exact time the first packet in the flow was sent (in YYYY-MM-DDTHH-MM-SS format).",
-  "TIME_LAST": "A timestamp indicating the exact time the last packet in the flow was sent (in YYYY-MM-DDTHH-MM-SS format).",
-  "PACKETS": "The number of data packets sent from the source to the destination.",
-  "PACKETS_REV": "The number of data packets sent from the destination to the source.",
-  "DST_PORT": "The destination port number.",
-  "SRC_PORT": "The source port number.",
-  "PROTOCOL": "The numerical identifier for the transport protocol used (e.g., TCP, UDP).",
-  "TCP_FLAGS": "A logical OR combination of all TCP flags present in packets transmitted from the source to the destination.",
-  "TCP_FLAGS_REV": "A logical OR combination of all TCP flags present in packets transmitted from the destination to the source.",
-  "TLS_ALPN": "The value of the Application-Layer Protocol Negotiation (ALPN) extension sent by the server.",
-  "TLS_JA3": "The JA3 fingerprint, which is a unique hash of the SSL/TLS client-side information.",
-  "TLS_SNI": "The value of the Server Name Indication (SNI) extension sent by the client."
-}
-"""
-
- [dataset_drift_analysis]
- description = """Drift analysis is used to see behavior of the dataset over time. In this section, you can see a comparison of two workflows: Dataset without retraining and dataset with retraining based on drift detection described in https://github.com/FETA-Project/DatasetCatalog-Tools/tree/main/drift-analyzer.
-This description contains summary results of drift counts and features and classes that caused the most drifts. In case you would like to see more detailed insights behind these summary numbers, please visit the included jupyter notebook, where you can even run your own queries.
-This is evaluated only for feature based datasets.
-"""
- drift_workflow = "n/a"
+[dataset_drift_analysis]
 
 [advanced_metrics]
-description = """
- 
-Advanced metrics provides more detailed evalution of provided dataset to understand its content. List and meaning of advanced metrics is the following:
-  
- * Permutation Slope: Shows linkage between data and labels. The higher metric the dataset and original labels have stronger relationship
- * P Value Status: Categorical metric to detect permutation p-value rules
- * Redundancy: Shows percentage of data samples that can we randomly deleted. The higher metric the more redundant samples
- * Similarity: Shows similarity of selected (main) class with the rest of classes. If the metric is above 1, they are different. If the metric is below 1, there is big similarity between classes.
-Calculation is done based on the following tool: https://github.com/FETA-Project/DatasetCatalog-Tools/tree/main/ndvm
-
-This is evaluated only for feature based datasets.
-"""
-perqoda_permutation_slope = """ n/a """
-p_value_status = """ n/a """
-redundancy = """ n/a """
-similarity = """ n/a """
-advanced_metrics_workflow = "Metric-Real-World-v1.ipynb"
+description = """  """
+perqoda_permutation_slope = """  """
+p_value_status = """  """
+redundancy = """  """
+similarity = """  """
+advanced_metrics_workflow = """ dataset-metrics.json """
 
 [dataset_comparison]
-description = "ML model comparison for this dataset"
-use_case = """ 
- * DNS Over HTTPS Detection Using Standard Flow Telemetry, F1 97.3, XGBoost
- * DNS Over HTTPS Detection Using Standard Flow Telemetry (filtered flows smaller than 120 packets), F1 99.8, XGBoost
- * NetTiSA: Extended IP flow with time-series features for universal
-bandwidth-constrained high-speed network traffic classification (nettisa feature vector), F1 98.8, XGBoost
- * Network Traffic Classification based on Single Flow Time Series Analysis, F1 98.8, XGBoost
- * METC: A Hybrid Deep Learning Framework for Cross-Network Encrypted DNS over HTTPS Traffic Detection and Tunnel Identification, F1 48.40, CNN-BiGRU-Attention
- * METC: A Hybrid Deep Learning Framework for Cross-Network Encrypted DNS over HTTPS Traffic Detection and Tunnel Identification, F1 39.49, XGBoost
-"""
-similar_dataset = """ 
- * CIRA-CIC-DoHBrw-2020, https://www.unb.ca/cic/datasets/dohbrw-2020.html
- * DoH Network Traffic, 10.21227/96ea-2055
- * Five-week DoH Dataset collected on ISP backbone lines, 10.5281/zenodo.8348772 
-"""
+description = """ ML model comparison for this dataset """
+use_case = """   """
+similar_dataset = """   """
