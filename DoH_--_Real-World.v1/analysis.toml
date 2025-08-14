@@ -94,7 +94,7 @@ label_name = "DoH"
  * [5][] Comparative Analysis of DNS Over HTTPS Detectors; [Follow up paper with new detection and extension of the dataset.][]
  * [6][] Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study; [only cited][]
  * [7][] Real-Time Analysis of Encrypted DNS Traffic for Threat Detection; [only cited][]
- * [8][] Network Traffic Classification based on Single Flow Time Series Analysis; [Proposes a novel flow extension for traffic features based on the time series analysis of the Single Flow Time series. ][]
+ * [8][] Network Traffic Classification based on Single Flow Time Series Analysis; [Proposes a novel flow extension for traffic features based on the time series analysis of the Single Flow Time series.][]
  * [9][] NinjaDoH: A Censorship-Resistant Moving Target DoH Server Using Hyperscalers and IPNS; [only cited][]
  * [10][] MTL-DoHTA: Multi-Task Learning-Based DNS over HTTPS Traffic Analysis for Enhanced Network Security; [only cited][]
  * [11][] From Bytes to Insights: A Systematic Literature Review on Unraveling IDS Datasets for Enhanced Cybersecurity Understanding; [only cited][]
