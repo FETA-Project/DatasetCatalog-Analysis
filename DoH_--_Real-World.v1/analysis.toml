@@ -32,7 +32,7 @@ label_name = "DoH"
   data_collection_year = 2021
   feature_extraction_tool_info = "Tool that converts dataset to feature dataset. If any."
   feature_extraction_tool = "ipfixprobe with TLS plugin"
-  feature_extraction_tool_description = "ipfix probe generates extended flow format based on used modules in the ipfixprobe. Per Packet Information (PPI) is flattended and used as single features."
+  feature_extraction_tool_description = "ipfixprobe generates extended flow format based on used modules."
   capture_config_parameters_info = "specific parameters that were used to capture dataset or feature dataset" 
   capture_config_parameters = """
   * /24, and /22 IPv4 address ranges assigned to the university campus
