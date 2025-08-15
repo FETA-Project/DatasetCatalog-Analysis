@@ -39,7 +39,7 @@ label_name = "DoH"
   * 100 Gbps traffic
   * editcap for deduplication
   * parallel SSH to run command on networking meter points
-   """"
+   """
   real_dataset_info = "Source of the dataset. E.g., real environment, testbed or generated."
   real_dataset = "yes"
   annotation_info = "Description of the dataset annotation. E.g., manual, automatic"
