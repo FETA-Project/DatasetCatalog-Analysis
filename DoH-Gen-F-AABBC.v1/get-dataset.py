@@ -7,8 +7,8 @@ import gzip
 
 def clean_directory(base_dir):
     shutil.rmtree(base_dir)
-    os.remove("0_chrome_bravedns-tlsflowdata.csv")
-    os.remove("0_chrome_blahdns-tlsflowdata.csv")
+    os.remove("6_post_blahdns-tlsflowdata.csv")
+    os.remove("12_post_cloudflare-tlsflowdata.csv")
 
 def concatenate_files(file1_path: str, file2_path: str, output_file_path: str) -> bool:
     """
@@ -31,9 +31,9 @@ def get_dataset_csv(base_dir):
     """
     Get sample dataset csv for analysis
     """
-    uncompressed_file = os.path.join(base_dir,"DoH-Gen-C-AABBCC","data","generated","tls-flow-csv","chrome","blahdns","0_chrome_blahdns-tlsflowdata.csv")
+    uncompressed_file = os.path.join(base_dir,"DoH-Gen-F-AABBCC","data","generated","tls-flow-csv","firefox","cloudflare","12_post_cloudflare-tlsflowdata.csv")
     shutil.copy(uncompressed_file,".")
-    uncompressed_file = os.path.join(base_dir,"DoH-Gen-C-AABBCC","data","generated","tls-flow-csv","chrome","bravedns","0_chrome_bravedns-tlsflowdata.csv")
+    uncompressed_file = os.path.join(base_dir,"DoH-Gen-F-AABBCC","data","generated","tls-flow-csv","firefox","blahdns","6_post_blahdns-tlsflowdata.csv")
     shutil.copy(uncompressed_file,".")
     print(f"Uncompressed file saved to: ",os.path.abspath("."))
 
@@ -104,9 +104,9 @@ def download_and_unzip(url, extract_to='.'):
     print(f"Error processing the file: {e}")
 
 # Run action
-zenodo_url = "https://zenodo.org/records/5957466/files/DoH-Gen-C-AABBCC.tar.gz?download=1"
+zenodo_url = "https://zenodo.org/records/5957278/files/DoH-Gen-F-AABBC.tar.gz?download=1"
 base_directory = 'extracted_data'
-#download_and_extract_tar_gz(zenodo_url, base_directory)
+download_and_extract_tar_gz(zenodo_url, base_directory)
 get_dataset_csv(base_directory)
-concatenate_files("0_chrome_bravedns-tlsflowdata.csv", "0_chrome_blahdns-tlsflowdata.csv","merged-doh-tls-dataset.csv")
+concatenate_files("6_post_blahdns-tlsflowdata.csv", "12_post_cloudflare-tlsflowdata.csv","merged-doh-tls-dataset.csv")
 clean_directory(base_directory)
