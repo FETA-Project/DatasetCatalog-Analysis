@@ -18,7 +18,7 @@
  submitter = "Karel Hynek <Karel.Hynek@cesnet.cz>"
  tags_info = "Use tags to categorize the dataset (comma separated)"
  tags = "FETA"
- url = ""
+ url = "https://zenodo.org/records/5956044/files/DoH-Real-World.tar.gz?download=1"
 versions = "v1"
 date_submitted = 2025-07-08T07:45:50.822000
 analysis_status = "Completed"
