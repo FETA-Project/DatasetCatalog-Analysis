@@ -23,7 +23,7 @@ date_submitted = 2024-11-27T09:29:12.238000
 versions = ""
 analysis_status = "Completed"
 files = ["get-dataset.py"]
-label_name = "APP"
+label_name = ""
 filename = ""
 
 [collection_workflow]
@@ -153,5 +153,7 @@ similar_dataset = """
 * MIRAGE-22
 * UTMOBILENET21 
 """
+# format: id, doi, title, [cited/used,comment/comparison]\n
+# format: id, doi, title, [cited/used,comment/comparison]\n
 # format: id, doi, title, [cited/used,comment/comparison]\n
 # format: id, doi, title, [cited/used,comment/comparison]\n
