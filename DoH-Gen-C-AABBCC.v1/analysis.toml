@@ -19,7 +19,7 @@ origins_doi = ""
 submitter = "Karel Hynek <Karel.Hynek@cesnet.cz>"
 tags_info = "Use tags to categorize the dataset (comma separated)"
 tags = "FETA"
-url = ""
+url = "https://zenodo.org/records/5957466/files/DoH-Gen-C-AABBCC.tar.gz?download=1"
 versions = "v1"
 date_submitted = 2025-07-08T08:09:15.276000
 analysis_status = "Completed"
