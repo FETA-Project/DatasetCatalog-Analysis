@@ -18,7 +18,7 @@ origins_doi_info = "DOI of the original dataset"
 origins_doi = ""
 submitter = "Karel Hynek <Karel.Hynek@cesnet.cz>"
 tags_info = "Use tags to categorize the dataset (comma separated)"
-tags = ""
+tags = "FETA"
 url = "https://zenodo.org/records/5957421/files/DoH-Gen-F-CCDDD.tar.gz?download=1"
 versions = "v1"
 date_submitted = 2025-07-08T08:08:00.854000
