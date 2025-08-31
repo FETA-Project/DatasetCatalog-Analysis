@@ -7,7 +7,7 @@ title_info = "Full title of the dataset. E.g., CESNET-TLS-Year22"
 title = ""
 paper_title_info = "Full title of the original paper with the dataset"
 paper_title = "Collection of datasets with DNS over HTTPS traffic"
-authors = ""
+authors = "Kamil Jeřábek, Karel Hynek, Tomáš Čejka, Ondřej Ryšavý"
 description_info = "High-level description of the dataset. E.g., TLS capture from CESNET2 backbone network over one year (2022). The capture was done using high-speed monitoring probes at the perimeter of CESNET2 network. This dataset provides realistic characteristics of traffic originating from various web browsers, operating systems, mobile devices, desktop machines, and both HTTP/1.1 and HTTP/2 protocols."
 description = "The dataset contains DoH and HTTPS traffic that was captured in controlled environment and generated automatically by Chrome browser with enabled DoH towards 6 different DoH servers (AdGuard, AhaDNS, BlahDNS, BraveDNS, Comcast, CZNIC) and a web page loads towards a sample of web pages taken from Majestic Million dataset. The data are provided in the form of PCAP files. However, we also provided TLS enriched flow data that are generated with opensource ipfixprobe flow exporter. Other than TLS related information is not relevant since the dataset comprises only encrypted TLS traffic"
 format_info = "Dataset data format. E.g. json, csv, datazoo"
@@ -25,7 +25,7 @@ date_submitted = 2025-07-08T08:09:15.276000
 analysis_status = "Completed"
 filename = ""
 files = ["get-dataset.py"]
-label_name = "DoH"
+label_name = "TLS_SNI"
 
 
 [collection_workflow]
