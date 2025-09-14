@@ -90,24 +90,24 @@ f1-score = "n/a"
  * [14][] 10.1109/COMST.2024.3504955; A Survey on Explainable Artificial Intelligence for Internet Traffic Classification and Prediction, and Intrusion Detection; [cited and considered in the survey][] 
  * [15][] 10.1109/ACCESS.2023.3275744; DNS Over HTTPS Detection Using Standard Flow Telemetry; [cited][] 
  * [16][] 10.1109/ACCESS.2024.3469730; Early Traffic Classification With Encrypted ClientHello: A Multi-Country Study; [cited][]
- * [17][] Review Challenges and Advances in Analyzing TLS 1.3-Encrypted Traffic: A Comprehensive Survey; [...][] 
+ * [17][] Review Challenges and Advances in Analyzing TLS 1.3-Encrypted Traffic: A Comprehensive Survey; [Cited the original paper and commented results. The main objection is that CESNET-TLS22 does not explicitely focus on TLS 1.3. Even though the TLS 1.3 is partially available.][] 
 [120] Application Classification [7,120] Application Classification [119] Service Classification [123] Service Classification [115] Service Classification [116] Protocol Identification [118] Web Fingerprinting [121] Phishing Detection [123] Service Classification [121] Phishing Detection
  * [18][] Encrypted traffic classification: the QUIC case; [cited][]
  * [19][] Concept drift and model degradation in network traffic classification; [cited][]
  * [20][] LGBM2VHDL: Mapping of LightGBM Models to FPGA; [cited][] 
- * [21][] Look at my Network: An insight into the ISP Backbone Traffic; [...][] 
+ * [21][] Look at my Network: An insight into the ISP Backbone Traffic; [cited][] 
  * [22][] Many or Few Samples? Comparing Transfer, Contrastive and Meta-Learning in Encrypted Traffic Classification; [cited][]
  * [23][] MFWDD: Model-based Feature Weight Drift Detection Showcased on TLS and QUIC Traffic; [cited][]
  * [24][] Network Traffic Classification based on Single Flow Time Series Analysis; [cited][]
  * [25][] I know I don’t know: an evidential deep learning framework for traffic classification; [cited][] 
- * [26][] CESNET-TLS-Year22: A year-spanning TLS network traffic dataset from backbone lines; [...][]
+ * [26][] CESNET-TLS-Year22: A year-spanning TLS network traffic dataset from backbone lines; [cited, CESNET-TLS22 is predecesor][]
 classification task using TLS traffic data
  * [27][] CESNET-TimeSeries24: Time Series Dataset for Network Traffic Anomaly Detection and Forecasting; [cited][]
  * [28][] TCI: A System for Distributed Network Monitoring, Troubleshooting and Dataset Creation; [cited][]
- * [29][] Towards reusable models in traffic classification; [...][] 
+ * [29][] Towards reusable models in traffic classification; [CESNET-TLS22 was used to train CESNET V1 model (part of CESNET Models repository, achieved 97% classification accuracy among 192 web service classes )][] 
 network data flow classification, TLS/QUIC service discovery classification task, application: machine learning
  * [30][] Unevenly Spaced Time Series from Network Traffic; [cited][] 
- * [31] User Behavior Detection Using Multi-Modal Signatures of Encrypted Network Traffic; [cited][]
+ * [31][] User Behavior Detection Using Multi-Modal Signatures of Encrypted Network Traffic; [cited][]
  """
 
 
