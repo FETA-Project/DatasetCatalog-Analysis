@@ -8,7 +8,7 @@ Datasets are organized in a two-level structure. The first level contains only t
 Use the Submit Dataset button and provide as many details as possible. Our data analysts will process the dataset and generate the final report with support metadata. You can track the progress with the Analysis Status field. 
 
 ## How to run dataset analysis
-In dataset-catalog.liberouter.org we have data analysts who run the dataset evaluation and validate results. If needed you can download all necessary files and run your own evaluation. Documentation of used workflow and tools can be found [here](https://gitlab.liberouter.org/monitoring/katoda-tools)
+In dataset-catalog.liberouter.org we have data analysts who run the dataset evaluation and validate results. If needed you can download all necessary files and run your own evaluation. All used tools can be found [here](https://github.com/FETA-Project/DatasetCatalog-Tools). Getting started example with example data can be found [here](https://github.com/FETA-Project/DatasetCatalog-Example).
 
 ## How to provide feedback
 If you have any questions or feedback, you can reach out to soukudom@fit.cvut.cz. If you have comments for a specific dataset, you can use the Discussion section inside the dataset report. 
