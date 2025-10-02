@@ -18,13 +18,13 @@ origins_doi = ""
 submitter = "Dominik Soukup <soukudom@cesnet.cz>"
 tags_info = "Use tags to categorize the dataset (comma separated)"
 tags = "network traffic classification"
-url = ""
+url = "https://github.com/CESNET/cesnet-datazoo"
 date_submitted = 2024-08-15T08:15:42.213000
 versions = "CESNET-QUIC22-XS"
-analysis_status = "Completed"
-files = [".DS_Store", "get-dataset.py"]
-label_name = "APP"
-filename = "CESNET-QUIC22.CESNET-QUIC22-XS.csv"
+analysis_status = "In Progress"
+files = ["get-dataset.py", ".DS_Store"]
+label_name = ""
+filename = ""
 
 [collection_workflow]
 data_collection_tool = "ipfixprobe"
