@@ -320,10 +320,10 @@ drift_workflow = "Reporter-CESNET-QUIC22-XS-Katoda.ipynb"
 
 [advanced_metrics]
 description = "Advanced metrics provides more detailed evalution of provided dataset to understand its content. List and meaning of advanced metrics is the following:\n\n- Permutation Slope: Shows linkage between data and labels. The higher metric the dataset and original labels have stronger relationship\n- P Value Status: Categorical metric to detect permutation p-value rules\n- Redundancy: Shows percentage of data samples that can we randomly deleted. The higher metric the more redundant samples\n- Similarity: Shows similarity of selected (main) class with the rest of classes. If the metric is above 1, they are different. If the metric is below 1, there is big similarity between classes.\nCalculation is done based on the following tool: https://github.com/soukudom/NDVM\n Note: Due to the large size of the dataset, the advanced metrics are calculated from the first week (31.10.-6.11.)\n"
-perqoda_permutation_slope = "0.771"
+perqoda_permutation_slope = "0.7787"
 p_value_status = "Good"
-redundancy = "0.007"
-similarity = "1.606"
+redundancy = "0.2421"
+similarity = "1.5729"
 advanced_metrics_workflow = "Metric-Showcase.ipynb"
 
 [dataset_drift_analysis.drifts_count]
