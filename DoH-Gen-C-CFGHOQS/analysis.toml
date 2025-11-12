@@ -19,6 +19,12 @@ submitter = "Karel Hynek <Karel.Hynek@cesnet.cz>"
 tags_info = "Use tags to categorize the dataset (comma separated)"
 tags = "FETA"
 url = "https://zenodo.org/records/5957660/files/DoH-Gen-C-CFGHOQS.tar.gz?download=1"
+versions = ""
+date_submitted = 2025-07-08T08:54:08.616000
+analysis_status = "Completed"
+filename = ""
+files = []
+label_name = "TLS_SNI"
 
 
 [collection_workflow]
