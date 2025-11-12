@@ -2265,22 +2265,22 @@ per_class_data = """{
   "gfe.nvidia.com": "1"
 }"""
 per_feature_data = """{
-  "DST_IP": "",
-  "SRC_IP": "",
-  "BYTES": "",
-  "BYTES_REV": "",
-  "TIME_FIRST": "",
-  "TIME_LAST": "",
-  "PACKETS": "",
-  "PACKETS_REV": "",
-  "DST_PORT": "",
-  "SRC_PORT": "",
-  "PROTOCOL": "",
-  "TCP_FLAGS": "",
-  "TCP_FLAGS_REV": "",
-  "TLS_ALPN": "",
-  "TLS_JA3": "",
-  "TLS_SNI": ""
+  "DST_IP": "The destination IP address.",
+  "SRC_IP": "The source IP address.",
+  "BYTES": "The total number of bytes transmitted from the source to the destination.",
+  "BYTES_REV": "The total number of bytes transmitted from the destination back to the source.",
+  "TIME_FIRST": "A timestamp indicating the exact time the first packet in the flow was sent (in YYYY-MM-DDTHH-MM-SS format).",
+  "TIME_LAST": "A timestamp indicating the exact time the last packet in the flow was sent (in YYYY-MM-DDTHH-MM-SS format).",
+  "PACKETS": "The number of data packets sent from the source to the destination.",
+  "PACKETS_REV": "The number of data packets sent from the destination to the source.",
+  "DST_PORT": "The destination port number.",
+  "SRC_PORT": "The source port number.",
+  "PROTOCOL": "The numerical identifier for the transport protocol used (e.g., TCP, UDP).",
+  "TCP_FLAGS": "A logical OR combination of all TCP flags present in packets transmitted from the source to the destination.",
+  "TCP_FLAGS_REV": "A logical OR combination of all TCP flags present in packets transmitted from the destination to the source.",
+  "TLS_ALPN": "The value of the Application-Layer Protocol Negotiation (ALPN) extension sent by the server.",
+  "TLS_JA3": "The JA3 fingerprint, which is a unique hash of the SSL/TLS client-side information.",
+  "TLS_SNI": "The value of the Server Name Indication (SNI) extension sent by the client."
 }"""
 
 [dataset_drift_analysis]
