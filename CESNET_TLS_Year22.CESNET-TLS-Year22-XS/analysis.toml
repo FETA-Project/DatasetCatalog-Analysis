@@ -20,7 +20,7 @@
  url = "https://github.com/CESNET/cesnet-datazoo"
  date_submitted = 2024-09-30T06:37:32.195000
  versions = "CESNET-TLS-Year22-XS"
- analysis_status = "In Progress"
+ analysis_status = "Completed"
  filename = ""
  files = ["servicemap.csv", "get-dataset.py"]
  label_name = "APP"
