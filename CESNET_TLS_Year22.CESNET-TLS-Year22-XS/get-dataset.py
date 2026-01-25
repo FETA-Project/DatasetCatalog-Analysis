@@ -12,7 +12,8 @@ import sklearn.metrics as metrics
 from sklearn.metrics import classification_report,confusion_matrix,f1_score
 #from sklearn.model_selection import train_test_split
 
-data = CESNET_TLS_Year22("/katoda/TLS/", size="XS")
+#data = CESNET_TLS_Year22("/katoda/TLS/", size="XS")
+data = CESNET_TLS_Year22("../../../TLS22_2/", size="XS")
 common_params = {
     "dataset": data,
     "train_period_name": "W-2022-44",
@@ -22,7 +23,7 @@ common_params = {
 
 hist_df = pd.DataFrame()
 current_date = datetime(2022, 1, 1)
-while current_date <= datetime(2022, 12, 31):
+while current_date <= datetime(2022, 1, 7):
     print("testing date ->", current_date)
     try:
         dataset_config = DatasetConfig(**common_params, test_period_name=current_date.strftime("M-%Y-%m"), test_dates=[current_date.strftime("%Y%m%d")])
@@ -34,8 +35,9 @@ while current_date <= datetime(2022, 12, 31):
     curr_sample["date"] = current_date
     hist_df = pd.concat([hist_df,curr_sample])
     current_date += timedelta(days=1)
-hist_df = hist_df.drop(columns=["date"])
-hist_df.to_csv("tls-evalution.csv", sep=',', index=False, encoding='utf-8')
+#hist_df = hist_df.drop(columns=["date"])
+#hist_df.to_csv("tls-evalution-date.csv", sep=',', index=False, encoding='utf-8')
+hist_df.to_csv("tls-evalution-date-training-one-week.csv", sep=',', index=False, encoding='utf-8')
 
 #Xdata = hist_df.drop(columns=["APP","date"])
 #ydata = hist_df.APP
