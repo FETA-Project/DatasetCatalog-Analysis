@@ -1,426 +1,430 @@
- acronym_info = "Short name of the dataset, which is used as the unique identifier. E.g., CESNET_TLS_Year22"
- acronym = "CESNET_TLS_Year22"
- acronym_aliases_info = "Additional alias for the Dataset Acronym (e.g. CESNET-TLS-Year22-XS). Used to filter the different subsection of the original dataset"
- acronym_aliases = "CESNET-TLS-Year22-XS"
- title_info = "Full title of the dataset. E.g., CESNET-TLS-Year22"
- title = ""
- paper_title_info = "Full title of the original paper with the dataset"
- paper_title = ""
- authors = "Jan Luxemburk"
- description_info = "Small size version (XS) of CESNET_TLS_Year22. High-level description of the dataset. E.g., TLS capture from CESNET2 backbone network over one year (2022). The capture was done using high-speed monitoring probes at the perimeter of CESNET2 network. This dataset provides realistic characteristics of traffic originating from various web browsers, operating systems, mobile devices, desktop machines, and both HTTP/1.1 and HTTP/2 protocols."
- description = "TLS capture from CESNET2 backbone network over one year (2022). The capture was done using high-speed monitoring probes at the perimeter of CESNET2 network. This dataset\r\nprovides realistic characteristics of traffic originating from various web browsers, operating systems, mobile devices,\r\ndesktop machines, and both HTTP/1.1 and HTTP/2 protocols."
- format = "datazoo"
- doi_info = "DOI of this dataset"
- doi = ""
- origins_doi_info = "DOI of the original dataset"
- origins_doi = ""
- submitter = "Dominik Soukup <soukudom@cesnet.cz>"
- tags_info = "Use tags to categorize the dataset (comma separated)"
- tags = "network traffic classfication, FETA"
- url = "https://github.com/CESNET/cesnet-datazoo"
- date_submitted = 2024-09-30T06:37:32.195000
- versions = "CESNET-TLS-Year22-XS"
- analysis_status = "In Progress"
- filename = ""
- files = ["servicemap.csv", "get-dataset.py"]
- label_name = "APP"
- 
- [collection_workflow]
- data_collection_tool = "ipfixprobe"
- data_collection_year = 2022
- feature_extraction_tool_info = "Tool that converts dataset to feature dataset. If any."
- feature_extraction_tool = "ipfixprobe PSTATS, TLS, PHISTS"
- feature_extraction_tool_description = "ipfix probe generates extended flow format based on used modules in the ipfixprobe. Per Packet Information (PPI) is flattended and used as single features."
- capture_config_parameters_info = "specific parameters that were used to capture dataset or feature dataset"
- capture_config_parameters = ""
- real_dataset_info = "Source of the dataset. E.g., real environment, testbed or generated."
- real_dataset = "yes, collected from CESNET3"
- annotation_info = "Description of the dataset annotation. E.g., manual, automatic"
- annotation = "Automatic based on SNI field from TLS header"
- 
- [generic_info]
- capture_dates_info = "When was the dataset captured/generated"
- capture_dates = "1.1.2022 - 31.12.2022"
- classes = 157
- features = "130"
- f1-score_info = "F1-score calculated based on NDVM tool [https://github.com/soukudom/NDVM]"
- f1-score = "0.7914"
- performance_metric_info = "Perfomance metric defined by the author. Please define full specification e.g., F1-weighted"
- performance_metric_name = "n/a"
- performance_metric_value = "n/a"
- label_info = "Name of the field with label. In case this is unsupervised dataset, type None. In case of more labels use ',' to separate"
- label = "APP"
- key_observations_info = "List of known errors, drifts, limits, ... of the dataset"
- key_observations = """
- * The dataset has 1 small classes, 86671 duplicated samples, 0 nan value 
- * ML performance drop without retrainig mainly in March. This drop is caused due to change in the network monitoring infrastructure.
- * Several days missing ['20220128', '20220129', '20220130', '20221212', '20221213', '20221229', '20221230', '20221231']
- * This is very large dataset. For advanced metric analysis, class count and classification performace calculation, we took only the first week (initial training window)
- * From drift analysis there are significat drifts zones also with retraining workflow (33 during the whole year in total)
- * From drift analysis there are obvious periods where F1 score goes down but no drift is detected. This is caused by big class complexity. After removing top 30 drifted classes, the overall F1 score is much more stable and retraining more reliable.  
- """
- dataset_organization_info = "Structure of the dataset. E.g., per day, per capture, per device"
- dataset_organization = "per day"
- dataset_application_info = "Where the dataset has been already applied. Format: id, doi, title, [cited/used,comment/comparison]"
- dataset_application = ""
- dataset_availability_description_info = "How is it possible to get the dataset?"
- dataset_availability_description = "Dataset is accessible via Zenodo as zip file or Datazoo framework. Datazoo provides a convenient way to get data in python. Iteration is possible per day as author claims. Examples are part of documentation https://cesnet.github.io/cesnet-datazoo/getting_started/."
- used_dataset_info = "Script to get dataset for provided analysis"
- used_dataset = "get-dataset.py"
- per_class_data = """{
-  "52": "5875",
-  "91": "5835",
-  "87": "5587",
-  "136": "5405",
-  "106": "5356",
-  "23": "5061",
-  "110": "4635",
-  "125": "4438",
-  "139": "4204",
-  "120": "4149",
-  "116": "4116",
-  "77": "3790",
-  "90": "3693",
-  "85": "3662",
-  "16": "3509",
-  "63": "3206",
-  "112": "3202",
-  "88": "3107",
-  "53": "3010",
-  "89": "2859",
-  "142": "2757",
-  "129": "2750",
-  "44": "2617",
-  "118": "2461",
-  "104": "2417",
-  "86": "2392",
-  "83": "1996",
-  "27": "1901",
-  "60": "1875",
-  "54": "1864",
-  "74": "1830",
-  "123": "1761",
-  "55": "1705",
-  "157": "1624",
-  "69": "1601",
-  "28": "1597",
-  "119": "1581",
-  "84": "1550",
-  "26": "1514",
-  "78": "1473",
-  "75": "1387",
-  "21": "1311",
-  "17": "1287",
-  "141": "1270",
-  "134": "1249",
-  "127": "1145",
-  "48": "1111",
-  "42": "1025",
-  "25": "1015",
-  "1": "1009",
-  "99": "959",
-  "153": "937",
-  "49": "890",
-  "80": "876",
-  "150": "825",
-  "40": "812",
-  "13": "799",
-  "121": "786",
-  "117": "751",
-  "34": "745",
-  "46": "730",
-  "148": "729",
-  "70": "724",
-  "22": "715",
-  "2": "696",
-  "32": "684",
-  "51": "654",
-  "41": "612",
-  "94": "575",
-  "135": "573",
-  "65": "568",
-  "67": "551",
-  "154": "513",
-  "71": "511",
-  "15": "476",
-  "156": "473",
-  "58": "459",
-  "149": "450",
-  "43": "432",
-  "5": "403",
-  "103": "394",
-  "47": "382",
-  "124": "382",
-  "115": "375",
-  "113": "371",
-  "82": "368",
-  "81": "367",
-  "64": "367",
-  "105": "366",
-  "133": "359",
-  "130": "359",
-  "37": "357",
-  "102": "348",
-  "114": "346",
-  "131": "346",
-  "36": "343",
-  "20": "339",
-  "128": "335",
-  "107": "330",
-  "108": "316",
-  "24": "313",
-  "6": "306",
-  "158": "305",
-  "29": "303",
-  "50": "302",
-  "95": "301",
-  "96": "298",
-  "152": "294",
-  "155": "288",
-  "57": "286",
-  "92": "284",
-  "144": "284",
-  "68": "282",
-  "122": "281",
-  "140": "280",
-  "38": "268",
-  "76": "262",
-  "18": "258",
-  "66": "256",
-  "138": "254",
-  "109": "253",
-  "98": "251",
-  "4": "249",
-  "12": "247",
-  "97": "247",
-  "59": "247",
-  "39": "246",
-  "147": "234",
-  "126": "234",
-  "111": "207",
-  "101": "206",
-  "146": "205",
-  "33": "199",
-  "143": "198",
-  "132": "196",
-  "7": "194",
-  "151": "185",
-  "35": "171",
-  "45": "171",
-  "19": "167",
-  "100": "167",
-  "137": "163",
-  "56": "147",
-  "93": "147",
-  "11": "144",
-  "61": "143",
-  "72": "139",
-  "159": "123",
-  "10": "122",
-  "14": "119",
-  "73": "117",
-  "9": "109",
-  "8": "91",
-  "145": "89",
-  "3": "89",
-  "31": "72",
-  "62": "62",
-  "30": "53",
-  "0": "46",
-  "79": "14"
-}"""
- 
- per_feature_data = 
- """
-{"IPT_1": "Inter Packet Time for packet 1",
-"IPT_2": "Inter Packet Time for packet 2",
-"IPT_3": "Inter Packet Time for packet 3",
-"IPT_4": "Inter Packet Time for packet 4",
-"IPT_5": "Inter Packet Time for packet 5",
-"IPT_6": "Inter Packet Time for packet 6",
-"IPT_7": "Inter Packet Time for packet 7",
-"IPT_8": "Inter Packet Time for packet 8",
-"IPT_9": "Inter Packet Time for packet 9",
-"IPT_10": "Inter Packet Time for packet 10",
-"IPT_11": "Inter Packet Time for packet 11",
-"IPT_12": "Inter Packet Time for packet 12",
-"IPT_13": "Inter Packet Time for packet 13",
-"IPT_14": "Inter Packet Time for packet 14",
-"IPT_15": "Inter Packet Time for packet 15",
-"IPT_16": "Inter Packet Time for packet 16",
-"IPT_17": "Inter Packet Time for packet 17",
-"IPT_18": "Inter Packet Time for packet 18",
-"IPT_19": "Inter Packet Time for packet 19",
-"IPT_20": "Inter Packet Time for packet 20",
-"IPT_21": "Inter Packet Time for packet 21",
-"IPT_22": "Inter Packet Time for packet 22",
-"IPT_23": "Inter Packet Time for packet 23",
-"IPT_24": "Inter Packet Time for packet 24",
-"IPT_25": "Inter Packet Time for packet 25",
-"IPT_26": "Inter Packet Time for packet 26",
-"IPT_27": "Inter Packet Time for packet 27",
-"IPT_28": "Inter Packet Time for packet 28",
-"IPT_29": "Inter Packet Time for packet 29",
-"IPT_30": "Inter Packet Time for packet 30",
-"DIR_1": "Packet Direction for packet 1",
-"DIR_2": "Packet Direction for packet 2",
-"DIR_3": "Packet Direction for packet 3",
-"DIR_4": "Packet Direction for packet 4",
-"DIR_5": "Packet Direction for packet 5",
-"DIR_6": "Packet Direction for packet 6",
-"DIR_7": "Packet Direction for packet 7",
-"DIR_8": "Packet Direction for packet 8",
-"DIR_9": "Packet Direction for packet 9",
-"DIR_10": "Packet Direction for packet 10",
-"DIR_11": "Packet Direction for packet 11",
-"DIR_12": "Packet Direction for packet 12",
-"DIR_13": "Packet Direction for packet 13",
-"DIR_14": "Packet Direction for packet 14",
-"DIR_15": "Packet Direction for packet 15",
-"DIR_16": "Packet Direction for packet 16",
-"DIR_17": "Packet Direction for packet 17",
-"DIR_18": "Packet Direction for packet 18",
-"DIR_19": "Packet Direction for packet 19",
-"DIR_20": "Packet Direction for packet 20",
-"DIR_21": "Packet Direction for packet 21",
-"DIR_22": "Packet Direction for packet 22",
-"DIR_23": "Packet Direction for packet 23",
-"DIR_24": "Packet Direction for packet 24",
-"DIR_25": "Packet Direction for packet 25",
-"DIR_26": "Packet Direction for packet 26",
-"DIR_27": "Packet Direction for packet 27",
-"DIR_28": "Packet Direction for packet 28",
-"DIR_29": "Packet Direction for packet 29",
-"DIR_30": "Packet Direction for packet 30",
-"SIZE_1": "Packet Size for packet 1",
-"SIZE_2": "Packet Size for packet 2",
-"SIZE_3": "Packet Size for packet 3",
-"SIZE_4": "Packet Size for packet 4",
-"SIZE_5": "Packet Size for packet 5",
-"SIZE_6": "Packet Size for packet 6",
-"SIZE_7": "Packet Size for packet 7",
-"SIZE_8": "Packet Size for packet 8",
-"SIZE_9": "Packet Size for packet 9",
-"SIZE_10": "Packet Size for packet 10",
-"SIZE_11": "Packet Size for packet 11",
-"SIZE_12": "Packet Size for packet 12",
-"SIZE_13": "Packet Size for packet 13",
-"SIZE_14": "Packet Size for packet 14",
-"SIZE_15": "Packet Size for packet 15",
-"SIZE_16": "Packet Size for packet 16",
-"SIZE_17": "Packet Size for packet 17",
-"SIZE_18": "Packet Size for packet 18",
-"SIZE_19": "Packet Size for packet 19",
-"SIZE_20": "Packet Size for packet 20",
-"SIZE_21": "Packet Size for packet 21",
-"SIZE_22": "Packet Size for packet 22",
-"SIZE_23": "Packet Size for packet 23",
-"SIZE_24": "Packet Size for packet 24",
-"SIZE_25": "Packet Size for packet 25",
-"SIZE_26": "Packet Size for packet 26",
-"SIZE_27": "Packet Size for packet 27",
-"SIZE_28": "Packet Size for packet 28",
-"SIZE_29": "Packet Size for packet 29",
-"SIZE_30": "Packet Size for packet 30",
-"BYTES": "Total number of bytes transmitted from client to server within the flow.",
-"BYTES_REV": "Total number of bytes transmitted from server to client within the flow.",
-"PACKETS": "Total number of packets transmitted from client to server within the flow.",
-"PACKETS_REV": "Total number of packets transmitted from server to client within the flow.",
-"PPI_LEN": "Total number of packets included in the Packet Pair Information (PPI) sequence.",
-"PPI_ROUNDTRIPS": "Estimated number of round trips within the Packet Pair Information (PPI) sequence.",
-"PPI_DURATION": "Total duration of the Packet Pair Information (PPI) sequence in seconds.",
-"DURATION": "Total duration of the network flow in seconds.",
-"FEND_IDLE": "Indicates if the flow ended due to an idle timeout (1 if true, 0 if false).",
-"FEND_ACTIVE": "Indicates if the flow ended due to an active timeout (1 if true, 0 if false).",
-"FEND_OTHER": "Indicates if the flow ended for reasons other than idle or active timeouts (1 if true, 0 if false).",
-"PSIZE_BIN1": "Number of packets within the first packet size bin (client to server).",
-"PSIZE_BIN2": "Number of packets within the second packet size bin (client to server).",
-"PSIZE_BIN3": "Number of packets within the third packet size bin (client to server).",
-"PSIZE_BIN4": "Number of packets within the fourth packet size bin (client to server).",
-"PSIZE_BIN5": "Number of packets within the fifth packet size bin (client to server).",
-"PSIZE_BIN6": "Number of packets within the sixth packet size bin (client to server).",
-"PSIZE_BIN7": "Number of packets within the seventh packet size bin (client to server).",
-"PSIZE_BIN8": "Number of packets within the eighth packet size bin (client to server).",
-"PSIZE_BIN1_REV": "Number of packets within the first packet size bin (server to client).",
-"PSIZE_BIN2_REV": "Number of packets within the second packet size bin (server to client).",
-"PSIZE_BIN3_REV": "Number of packets within the third packet size bin (server to client).",
-"PSIZE_BIN4_REV": "Number of packets within the fourth packet size bin (server to client).",
-"PSIZE_BIN5_REV": "Number of packets within the fiveth packet size bin (server to client).",
-"PSIZE_BIN6_REV": "Number of packets within the sixth packet size bin (server to client).",
-"PSIZE_BIN7_REV": "Number of packets within the seventh packet size bin (server to client).",
-"PSIZE_BIN8_REV": "Number of packets within the eighth packet size bin (server to client).",
-"IPT_BIN1": "Number of inter-packet times within the first inter-packet time bin (client to server).",
-"IPT_BIN2": "Number of inter-packet times within the second inter-packet time bin (client to server).",
-"IPT_BIN3": "Number of inter-packet times within the third inter-packet time bin (client to server).",
-"IPT_BIN4": "Number of inter-packet times within the fourth inter-packet time bin (client to server).",
-"IPT_BIN5": "Number of inter-packet times within the fifth inter-packet time bin (client to server).",
-"IPT_BIN6": "Number of inter-packet times within the sixth inter-packet time bin (client to server).",
-"IPT_BIN7": "Number of inter-packet times within the seventh inter-packet time bin (client to server).",
-"IPT_BIN8": "Number of inter-packet times within the eighth inter-packet time bin (client to server).",
-"IPT_BIN1_REV": "Number of inter-packet times within the first inter-packet time bin (server to client).",
-"IPT_BIN2_REV": "Number of inter-packet times within the second inter-packet time bin (server to client).",
-"IPT_BIN3_REV": "Number of inter-packet times within the third inter-packet time bin (server to client).",
-"IPT_BIN4_REV": "Number of inter-packet times within the fourth inter-packet time bin (server to client).",
-"IPT_BIN5_REV": "Number of inter-packet times within the fifth inter-packet time bin (server to client).",
-"IPT_BIN6_REV": "Number of inter-packet times within the sixth inter-packet time bin (server to client).",
-"IPT_BIN7_REV": "Number of inter-packet times within the seventh inter-packet time bin (server to client).",
-"IPT_BIN8_REV": "Number of inter-packet times within the eighth inter-packet time bin (server to client)."
-}
-"""
- [dataset_drift_analysis]
- description = "Drift analysis is used to see behavior of the dataset over time. In this section, you can see a comparison of two workflows: Dataset without retraining and dataset with retraining based on drift detection described in https://github.com/FETA-Project/MFWDD.\nThis description contains summary results of drift counts and features and classes that caused the most drifts. In case you would like to see more detailed insights behind these summary numbers, please visit the included jupyter notebook, where you can even run your own queries."
- drift_workflow = "Dataset-Drift-View.ipynb"
- 
- [advanced_metrics]
- description = "\nAdvanced metrics provides more detailed evalution of provided dataset to understand its content. List and meaning of advanced metrics is the following:\n  \n- Permutation Slope: Shows linkage between data and labels. The higher metric the dataset and original labels have stronger relationship\n- P Value Status: Categorical metric to detect permutation p-value rules\n- Redundancy: Shows percentage of data samples that can we randomly deleted. The higher metric the more redundant samples\n- Similarity: Shows similarity of selected (main) class with the rest of classes. If the metric is above 1, they are different. If the metric is below 1, there is big similarity between classes.\nCalculation is done based on the following tool: https://github.com/soukudom/NDVM\n"
- perqoda_permutation_slope = "0.67316"
- p_value_status = "good"
- redundancy = "0.1796"
- similarity = "1.6875"
- advanced_metrics_workflow = "Dataset-Metrics-View.ipynb"
- 
- 
- [dataset_drift_analysis.drifts_count]
- without_retraining = """{"Not Drifted": 157,"Drifted": 191}"""
- retraining = """{"Not Drifted": 313,"Drifted": 33}"""
- 
- [dataset_drift_analysis.top_5]
- classes_without_retraining = """
- {
-     "157": 346,
-     "105": 341,
-     "16": 335,
-     "136": 314,
-     "85": 313
- }"""
- classes_retrainig = """
- {
-     "89": 223,
-     "157": 217,
-     "25": 215,
-     "69": 212,
-     "136": 208
- }"""
- features_without_retraining = """
- {
-     "SIZE_1": 235,
-     "SIZE_4": 201,
-     "DIR_4": 193,
-     "SIZE_28": 152,
-     "SIZE_30": 151
- }"""
- features_retraining = """
- {
-     "SIZE_1": 105,
-     "DIR_28": 48,
-     "DIR_30": 48,
-     "DIR_27": 47,
-     "DIR_29": 47
- }"""
- 
- [dataset_comparison]
- description = "ML model comparison for this dataset"
- use_case = """ n/a """
- similar_dataset = """ 
-  * CESNET_TLS_Year22.* (all childs)
- """
+###  acronym_info = "Short name of the dataset, which is used as the unique identifier. E.g., CESNET_TLS_Year22"
+###  acronym = "CESNET_TLS_Year22"
+###  acronym_aliases_info = "Additional alias for the Dataset Acronym (e.g. CESNET-TLS-Year22-XS). Used to filter the different subsection of the original dataset"
+###  acronym_aliases = "CESNET-TLS-Year22-XS"
+###  title_info = "Full title of the dataset. E.g., CESNET-TLS-Year22"
+###  title = ""
+###  paper_title_info = "Full title of the original paper with the dataset"
+###  paper_title = ""
+###  authors = "Jan Luxemburk"
+###  description_info = "Small size version (XS) of CESNET_TLS_Year22. High-level description of the dataset. E.g., TLS capture from CESNET2 backbone network over one year (2022). The capture was done using high-speed monitoring probes at the perimeter of CESNET2 network. This dataset provides realistic characteristics of traffic originating from various web browsers, operating systems, mobile devices, desktop machines, and both HTTP/1.1 and HTTP/2 protocols."
+###  description = "TLS capture from CESNET2 backbone network over one year (2022). The capture was done using high-speed monitoring probes at the perimeter of CESNET2 network. This dataset\r\nprovides realistic characteristics of traffic originating from various web browsers, operating systems, mobile devices,\r\ndesktop machines, and both HTTP/1.1 and HTTP/2 protocols."
+###  format = "datazoo"
+###  doi_info = "DOI of this dataset"
+###  doi = ""
+###  origins_doi_info = "DOI of the original dataset"
+###  origins_doi = ""
+###  submitter = "Dominik Soukup <soukudom@cesnet.cz>"
+###  tags_info = "Use tags to categorize the dataset (comma separated)"
+###  tags = "network traffic classfication, FETA"
+###  url = "https://github.com/CESNET/cesnet-datazoo"
+###  date_submitted = 2024-09-30T06:37:32.195000
+###  versions = "CESNET-TLS-Year22-XS"
+###  analysis_status = "In Progress"
+###  filename = ""
+###  files = ["servicemap.csv", "get-dataset.py"]
+###  label_name = "APP"
+###  
+###  [collection_workflow]
+###  data_collection_tool = "ipfixprobe"
+###  data_collection_year = 2022
+###  feature_extraction_tool_info = "Tool that converts dataset to feature dataset. If any."
+###  feature_extraction_tool = "ipfixprobe PSTATS, TLS, PHISTS"
+###  feature_extraction_tool_description = "ipfix probe generates extended flow format based on used modules in the ipfixprobe. Per Packet Information (PPI) is flattended and used as single features."
+###  capture_config_parameters_info = "specific parameters that were used to capture dataset or feature dataset"
+###  capture_config_parameters = ""
+###  real_dataset_info = "Source of the dataset. E.g., real environment, testbed or generated."
+###  real_dataset = "yes, collected from CESNET3"
+###  annotation_info = "Description of the dataset annotation. E.g., manual, automatic"
+###  annotation = "Automatic based on SNI field from TLS header"
+###  
+###  [generic_info]
+###  capture_dates_info = "When was the dataset captured/generated"
+###  capture_dates = "1.1.2022 - 31.12.2022"
+###  classes = 157
+###  features = "130"
+###  f1-score_info = "F1-score calculated based on NDVM tool [https://github.com/soukudom/NDVM]"
+###  f1-score = "0.7914"
+###  performance_metric_info = "Perfomance metric defined by the author. Please define full specification e.g., F1-weighted"
+###  performance_metric_name = "n/a"
+###  performance_metric_value = "n/a"
+###  label_info = "Name of the field with label. In case this is unsupervised dataset, type None. In case of more labels use ',' to separate"
+###  label = "APP"
+###  key_observations_info = "List of known errors, drifts, limits, ... of the dataset"
+###  key_observations = """
+###  * The dataset has 1 small classes, 86671 duplicated samples, 0 nan value 
+###  * ML performance drop without retrainig mainly in March. This drop is caused due to change in the network monitoring infrastructure.
+###  * Several days missing ['20220128', '20220129', '20220130', '20221212', '20221213', '20221229', '20221230', '20221231']
+###  * This is very large dataset. For advanced metric analysis, class count and classification performace calculation, we took only the first week (initial training window)
+###  * From drift analysis there are significat drifts zones also with retraining workflow (33 during the whole year in total)
+###  * From drift analysis there are obvious periods where F1 score goes down but no drift is detected. This is caused by big class complexity. After removing top 30 drifted classes, the overall F1 score is much more stable and retraining more reliable.  
+###  """
+###  dataset_organization_info = "Structure of the dataset. E.g., per day, per capture, per device"
+###  dataset_organization = "per day"
+###  dataset_application_info = "Where the dataset has been already applied. Format: id, doi, title, [cited/used,comment/comparison]"
+###  dataset_application = ""
+###  dataset_availability_description_info = "How is it possible to get the dataset?"
+###  dataset_availability_description = "Dataset is accessible via Zenodo as zip file or Datazoo framework. Datazoo provides a convenient way to get data in python. Iteration is possible per day as author claims. Examples are part of documentation https://cesnet.github.io/cesnet-datazoo/getting_started/."
+###  used_dataset_info = "Script to get dataset for provided analysis"
+###  used_dataset = "get-dataset.py"
+###  per_class_data = """{
+###   "52": "5875",
+###   "91": "5835",
+###   "87": "5587",
+###   "136": "5405",
+###   "106": "5356",
+###   "23": "5061",
+###   "110": "4635",
+###   "125": "4438",
+###   "139": "4204",
+###   "120": "4149",
+###   "116": "4116",
+###   "77": "3790",
+###   "90": "3693",
+###   "85": "3662",
+###   "16": "3509",
+###   "63": "3206",
+###   "112": "3202",
+###   "88": "3107",
+###   "53": "3010",
+###   "89": "2859",
+###   "142": "2757",
+###   "129": "2750",
+###   "44": "2617",
+###   "118": "2461",
+###   "104": "2417",
+###   "86": "2392",
+###   "83": "1996",
+###   "27": "1901",
+###   "60": "1875",
+###   "54": "1864",
+###   "74": "1830",
+###   "123": "1761",
+###   "55": "1705",
+###   "157": "1624",
+###   "69": "1601",
+###   "28": "1597",
+###   "119": "1581",
+###   "84": "1550",
+###   "26": "1514",
+###   "78": "1473",
+###   "75": "1387",
+###   "21": "1311",
+###   "17": "1287",
+###   "141": "1270",
+###   "134": "1249",
+###   "127": "1145",
+###   "48": "1111",
+###   "42": "1025",
+###   "25": "1015",
+###   "1": "1009",
+###   "99": "959",
+###   "153": "937",
+###   "49": "890",
+###   "80": "876",
+###   "150": "825",
+###   "40": "812",
+###   "13": "799",
+###   "121": "786",
+###   "117": "751",
+###   "34": "745",
+###   "46": "730",
+###   "148": "729",
+###   "70": "724",
+###   "22": "715",
+###   "2": "696",
+###   "32": "684",
+###   "51": "654",
+###   "41": "612",
+###   "94": "575",
+###   "135": "573",
+###   "65": "568",
+###   "67": "551",
+###   "154": "513",
+###   "71": "511",
+###   "15": "476",
+###   "156": "473",
+###   "58": "459",
+###   "149": "450",
+###   "43": "432",
+###   "5": "403",
+###   "103": "394",
+###   "47": "382",
+###   "124": "382",
+###   "115": "375",
+###   "113": "371",
+###   "82": "368",
+###   "81": "367",
+###   "64": "367",
+###   "105": "366",
+###   "133": "359",
+###   "130": "359",
+###   "37": "357",
+###   "102": "348",
+###   "114": "346",
+###   "131": "346",
+###   "36": "343",
+###   "20": "339",
+###   "128": "335",
+###   "107": "330",
+###   "108": "316",
+###   "24": "313",
+###   "6": "306",
+###   "158": "305",
+###   "29": "303",
+###   "50": "302",
+###   "95": "301",
+###   "96": "298",
+###   "152": "294",
+###   "155": "288",
+###   "57": "286",
+###   "92": "284",
+###   "144": "284",
+###   "68": "282",
+###   "122": "281",
+###   "140": "280",
+###   "38": "268",
+###   "76": "262",
+###   "18": "258",
+###   "66": "256",
+###   "138": "254",
+###   "109": "253",
+###   "98": "251",
+###   "4": "249",
+###   "12": "247",
+###   "97": "247",
+###   "59": "247",
+###   "39": "246",
+###   "147": "234",
+###   "126": "234",
+###   "111": "207",
+###   "101": "206",
+###   "146": "205",
+###   "33": "199",
+###   "143": "198",
+###   "132": "196",
+###   "7": "194",
+###   "151": "185",
+###   "35": "171",
+###   "45": "171",
+###   "19": "167",
+###   "100": "167",
+###   "137": "163",
+###   "56": "147",
+###   "93": "147",
+###   "11": "144",
+###   "61": "143",
+###   "72": "139",
+###   "159": "123",
+###   "10": "122",
+###   "14": "119",
+###   "73": "117",
+###   "9": "109",
+###   "8": "91",
+###   "145": "89",
+###   "3": "89",
+###   "31": "72",
+###   "62": "62",
+###   "30": "53",
+###   "0": "46",
+###   "79": "14"
+### }"""
+###  
+###  per_feature_data = 
+###  """
+### {"IPT_1": "Inter Packet Time for packet 1",
+### "IPT_2": "Inter Packet Time for packet 2",
+### "IPT_3": "Inter Packet Time for packet 3",
+### "IPT_4": "Inter Packet Time for packet 4",
+### "IPT_5": "Inter Packet Time for packet 5",
+### "IPT_6": "Inter Packet Time for packet 6",
+### "IPT_7": "Inter Packet Time for packet 7",
+### "IPT_8": "Inter Packet Time for packet 8",
+### "IPT_9": "Inter Packet Time for packet 9",
+### "IPT_10": "Inter Packet Time for packet 10",
+### "IPT_11": "Inter Packet Time for packet 11",
+### "IPT_12": "Inter Packet Time for packet 12",
+### "IPT_13": "Inter Packet Time for packet 13",
+### "IPT_14": "Inter Packet Time for packet 14",
+### "IPT_15": "Inter Packet Time for packet 15",
+### "IPT_16": "Inter Packet Time for packet 16",
+### "IPT_17": "Inter Packet Time for packet 17",
+### "IPT_18": "Inter Packet Time for packet 18",
+### "IPT_19": "Inter Packet Time for packet 19",
+### "IPT_20": "Inter Packet Time for packet 20",
+### "IPT_21": "Inter Packet Time for packet 21",
+### "IPT_22": "Inter Packet Time for packet 22",
+### "IPT_23": "Inter Packet Time for packet 23",
+### "IPT_24": "Inter Packet Time for packet 24",
+### "IPT_25": "Inter Packet Time for packet 25",
+### "IPT_26": "Inter Packet Time for packet 26",
+### "IPT_27": "Inter Packet Time for packet 27",
+### "IPT_28": "Inter Packet Time for packet 28",
+### "IPT_29": "Inter Packet Time for packet 29",
+### "IPT_30": "Inter Packet Time for packet 30",
+### "DIR_1": "Packet Direction for packet 1",
+### "DIR_2": "Packet Direction for packet 2",
+### "DIR_3": "Packet Direction for packet 3",
+### "DIR_4": "Packet Direction for packet 4",
+### "DIR_5": "Packet Direction for packet 5",
+### "DIR_6": "Packet Direction for packet 6",
+### "DIR_7": "Packet Direction for packet 7",
+### "DIR_8": "Packet Direction for packet 8",
+### "DIR_9": "Packet Direction for packet 9",
+### "DIR_10": "Packet Direction for packet 10",
+### "DIR_11": "Packet Direction for packet 11",
+### "DIR_12": "Packet Direction for packet 12",
+### "DIR_13": "Packet Direction for packet 13",
+### "DIR_14": "Packet Direction for packet 14",
+### "DIR_15": "Packet Direction for packet 15",
+### "DIR_16": "Packet Direction for packet 16",
+### "DIR_17": "Packet Direction for packet 17",
+### "DIR_18": "Packet Direction for packet 18",
+### "DIR_19": "Packet Direction for packet 19",
+### "DIR_20": "Packet Direction for packet 20",
+### "DIR_21": "Packet Direction for packet 21",
+### "DIR_22": "Packet Direction for packet 22",
+### "DIR_23": "Packet Direction for packet 23",
+### "DIR_24": "Packet Direction for packet 24",
+### "DIR_25": "Packet Direction for packet 25",
+### "DIR_26": "Packet Direction for packet 26",
+### "DIR_27": "Packet Direction for packet 27",
+### "DIR_28": "Packet Direction for packet 28",
+### "DIR_29": "Packet Direction for packet 29",
+### "DIR_30": "Packet Direction for packet 30",
+### "SIZE_1": "Packet Size for packet 1",
+### "SIZE_2": "Packet Size for packet 2",
+### "SIZE_3": "Packet Size for packet 3",
+### "SIZE_4": "Packet Size for packet 4",
+### "SIZE_5": "Packet Size for packet 5",
+### "SIZE_6": "Packet Size for packet 6",
+### "SIZE_7": "Packet Size for packet 7",
+### "SIZE_8": "Packet Size for packet 8",
+### "SIZE_9": "Packet Size for packet 9",
+### "SIZE_10": "Packet Size for packet 10",
+### "SIZE_11": "Packet Size for packet 11",
+### "SIZE_12": "Packet Size for packet 12",
+### "SIZE_13": "Packet Size for packet 13",
+### "SIZE_14": "Packet Size for packet 14",
+### "SIZE_15": "Packet Size for packet 15",
+### "SIZE_16": "Packet Size for packet 16",
+### "SIZE_17": "Packet Size for packet 17",
+### "SIZE_18": "Packet Size for packet 18",
+### "SIZE_19": "Packet Size for packet 19",
+### "SIZE_20": "Packet Size for packet 20",
+### "SIZE_21": "Packet Size for packet 21",
+### "SIZE_22": "Packet Size for packet 22",
+### "SIZE_23": "Packet Size for packet 23",
+### "SIZE_24": "Packet Size for packet 24",
+### "SIZE_25": "Packet Size for packet 25",
+### "SIZE_26": "Packet Size for packet 26",
+### "SIZE_27": "Packet Size for packet 27",
+### "SIZE_28": "Packet Size for packet 28",
+### "SIZE_29": "Packet Size for packet 29",
+### "SIZE_30": "Packet Size for packet 30",
+### "BYTES": "Total number of bytes transmitted from client to server within the flow.",
+### "BYTES_REV": "Total number of bytes transmitted from server to client within the flow.",
+### "PACKETS": "Total number of packets transmitted from client to server within the flow.",
+### "PACKETS_REV": "Total number of packets transmitted from server to client within the flow.",
+### "PPI_LEN": "Total number of packets included in the Packet Pair Information (PPI) sequence.",
+### "PPI_ROUNDTRIPS": "Estimated number of round trips within the Packet Pair Information (PPI) sequence.",
+### "PPI_DURATION": "Total duration of the Packet Pair Information (PPI) sequence in seconds.",
+### "DURATION": "Total duration of the network flow in seconds.",
+### "FEND_IDLE": "Indicates if the flow ended due to an idle timeout (1 if true, 0 if false).",
+### "FEND_ACTIVE": "Indicates if the flow ended due to an active timeout (1 if true, 0 if false).",
+### "FEND_OTHER": "Indicates if the flow ended for reasons other than idle or active timeouts (1 if true, 0 if false).",
+### "PSIZE_BIN1": "Number of packets within the first packet size bin (client to server).",
+### "PSIZE_BIN2": "Number of packets within the second packet size bin (client to server).",
+### "PSIZE_BIN3": "Number of packets within the third packet size bin (client to server).",
+### "PSIZE_BIN4": "Number of packets within the fourth packet size bin (client to server).",
+### "PSIZE_BIN5": "Number of packets within the fifth packet size bin (client to server).",
+### "PSIZE_BIN6": "Number of packets within the sixth packet size bin (client to server).",
+### "PSIZE_BIN7": "Number of packets within the seventh packet size bin (client to server).",
+### "PSIZE_BIN8": "Number of packets within the eighth packet size bin (client to server).",
+### "PSIZE_BIN1_REV": "Number of packets within the first packet size bin (server to client).",
+### "PSIZE_BIN2_REV": "Number of packets within the second packet size bin (server to client).",
+### "PSIZE_BIN3_REV": "Number of packets within the third packet size bin (server to client).",
+### "PSIZE_BIN4_REV": "Number of packets within the fourth packet size bin (server to client).",
+### "PSIZE_BIN5_REV": "Number of packets within the fiveth packet size bin (server to client).",
+### "PSIZE_BIN6_REV": "Number of packets within the sixth packet size bin (server to client).",
+### "PSIZE_BIN7_REV": "Number of packets within the seventh packet size bin (server to client).",
+### "PSIZE_BIN8_REV": "Number of packets within the eighth packet size bin (server to client).",
+### "IPT_BIN1": "Number of inter-packet times within the first inter-packet time bin (client to server).",
+### "IPT_BIN2": "Number of inter-packet times within the second inter-packet time bin (client to server).",
+### "IPT_BIN3": "Number of inter-packet times within the third inter-packet time bin (client to server).",
+### "IPT_BIN4": "Number of inter-packet times within the fourth inter-packet time bin (client to server).",
+### "IPT_BIN5": "Number of inter-packet times within the fifth inter-packet time bin (client to server).",
+### "IPT_BIN6": "Number of inter-packet times within the sixth inter-packet time bin (client to server).",
+### "IPT_BIN7": "Number of inter-packet times within the seventh inter-packet time bin (client to server).",
+### "IPT_BIN8": "Number of inter-packet times within the eighth inter-packet time bin (client to server).",
+### "IPT_BIN1_REV": "Number of inter-packet times within the first inter-packet time bin (server to client).",
+### "IPT_BIN2_REV": "Number of inter-packet times within the second inter-packet time bin (server to client).",
+### "IPT_BIN3_REV": "Number of inter-packet times within the third inter-packet time bin (server to client).",
+### "IPT_BIN4_REV": "Number of inter-packet times within the fourth inter-packet time bin (server to client).",
+### "IPT_BIN5_REV": "Number of inter-packet times within the fifth inter-packet time bin (server to client).",
+### "IPT_BIN6_REV": "Number of inter-packet times within the sixth inter-packet time bin (server to client).",
+### "IPT_BIN7_REV": "Number of inter-packet times within the seventh inter-packet time bin (server to client).",
+### "IPT_BIN8_REV": "Number of inter-packet times within the eighth inter-packet time bin (server to client)."
+### }
+### """
+###  [dataset_drift_analysis]
+###  description = "Drift analysis is used to see behavior of the dataset over time. In this section, you can see a comparison of two workflows: Dataset without retraining and dataset with retraining based on drift detection described in https://github.com/FETA-Project/MFWDD.\nThis description contains summary results of drift counts and features and classes that caused the most drifts. In case you would like to see more detailed insights behind these summary numbers, please visit the included jupyter notebook, where you can even run your own queries."
+###  drift_workflow = "Dataset-Drift-View.ipynb"
+###  
+###  [advanced_metrics]
+###  description = "\nAdvanced metrics provides more detailed evalution of provided dataset to understand its content. List and meaning of advanced metrics is the following:\n  \n- Permutation Slope: Shows linkage between data and labels. The higher metric the dataset and original labels have stronger relationship\n- P Value Status: Categorical metric to detect permutation p-value rules\n- Redundancy: Shows percentage of data samples that can we randomly deleted. The higher metric the more redundant samples\n- Similarity: Shows similarity of selected (main) class with the rest of classes. If the metric is above 1, they are different. If the metric is below 1, there is big similarity between classes.\nCalculation is done based on the following tool: https://github.com/soukudom/NDVM\n"
+###  perqoda_permutation_slope = "0.67316"
+###  p_value_status = "good"
+###  redundancy = "0.1796"
+###  similarity = "1.6875"
+###  advanced_metrics_workflow = "Dataset-Metrics-View.ipynb"
+###  
+###  
+###  [dataset_drift_analysis.drifts_count]
+###  without_retraining = """{"Not Drifted": 157,"Drifted": 191}"""
+###  retraining = """{"Not Drifted": 313,"Drifted": 33}"""
+###  
+###  [dataset_drift_analysis.top_5]
+###  classes_without_retraining = """
+###  {
+###      "157": 346,
+###      "105": 341,
+###      "16": 335,
+###      "136": 314,
+###      "85": 313
+###  }"""
+###  classes_retrainig = """
+###  {
+###      "89": 223,
+###      "157": 217,
+###      "25": 215,
+###      "69": 212,
+###      "136": 208
+###  }"""
+###  features_without_retraining = """
+###  {
+###      "SIZE_1": 235,
+###      "SIZE_4": 201,
+###      "DIR_4": 193,
+###      "SIZE_28": 152,
+###      "SIZE_30": 151
+###  }"""
+###  features_retraining = """
+###  {
+###      "SIZE_1": 105,
+###      "DIR_28": 48,
+###      "DIR_30": 48,
+###      "DIR_27": 47,
+###      "DIR_29": 47
+###  }"""
+###  
+###  [dataset_comparison]
+###  description = "ML model comparison for this dataset"
+###  use_case = """ n/a """
+###  similar_dataset = """ 
+###   * CESNET_TLS_Year22.* (all childs)
+###  """
+
+["Analysis Error"]
+Message = "Unexpected character: '\\n' at line 233 col 20"
+Attention = "Original lines will be commented out (###) in the analysis.toml file"
