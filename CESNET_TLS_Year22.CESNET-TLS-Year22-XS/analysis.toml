@@ -423,7 +423,3 @@
  similar_dataset = """ 
   * CESNET_TLS_Year22.* (all childs)
  """
-
-["Analysis Error"]
-Message = "Unexpected character: '\\n' at line 233 col 20"
-Attention = "Original lines will be commented out ( in the analysis.toml file"
